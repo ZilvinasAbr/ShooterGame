@@ -1,0 +1,45 @@
+L1:
+
+Singleton - pvz zaidimo map'as yra singletonas
+
+Factory - Enemies sukurimui galima panaudoti.
+
+Abstract Factory - naudoti, kad sistema nepirklausytų nuo to, kaip
+jos produktai yra sukuriami. Irgi enemies kurimui galima panaudoti,
+pvz sujungiant kelis factories ir priesus abstrakciai kuriant.
+
+Strategy - tiesiog abstraktina tam tikrus metodus?
+
+Observer - Define a one-to-many dependency between objects so that
+when one object changes state, all its dependents are notified and
+updated automatically.
+Notifyinti galima pvz kad zaidejo life'ai pasieke tam tikra kieki
+ir kad tarkim del to priesai pasidarytu agresyvesni ar pns.
+
+Builder - nelabai suprantu šitą.
+
+L2:
+
+Adapter - reiktų kažkaip sugalvoti panaudojimo atvejį.
+
+Klasės:
+Player
+Level
+Wall
+IEnemy
+EnemyA
+EnemyB
+EnemyC
+IGun
+GunA
+GunB
+GunC
+Health pack
+IKulka
+KulkaA
+KulkaB
+KulkaC
+IArmor
+ArmorA
+ArmorB
+ArmorC
