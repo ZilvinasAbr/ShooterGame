@@ -1,4 +1,4 @@
-L1:
+﻿L1:
 
 Singleton - pvz zaidimo map'as yra singletonas
 
@@ -20,7 +20,7 @@ Builder - nelabai suprantu šitą.
 
 L2:
 
-Adapter - reiktų kažkaip sugalvoti panaudojimo atvejį.
+Adapter - Boss klase bus, kuris nebus Enemy, tai reiks adapterio tarp ju.
 
 Klasės:
 Player

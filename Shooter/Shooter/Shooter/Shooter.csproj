@@ -41,6 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\IEnemy.cs" />
+    <Compile Include="Classes\IPlayer.cs" />
+    <Compile Include="Classes\Map.cs" />
+    <Compile Include="Classes\Player1.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
