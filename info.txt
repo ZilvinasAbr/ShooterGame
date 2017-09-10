@@ -1,4 +1,7 @@
-﻿L1:
+﻿Cia gera info kaip galima ant Game Development panaudoti design patterns:
+https://gamedev.stackexchange.com/questions/4157/what-are-some-programming-design-patterns-that-are-useful-in-game-development
+
+L1:
 
 Singleton - pvz zaidimo map'as yra singletonas
 
@@ -8,7 +11,10 @@ Abstract Factory - naudoti, kad sistema nepirklausytų nuo to, kaip
 jos produktai yra sukuriami. Irgi enemies kurimui galima panaudoti,
 pvz sujungiant kelis factories ir priesus abstrakciai kuriant.
 
-Strategy - tiesiog abstraktina tam tikrus metodus?
+Strategy - Leidzia naudoti ivairias tam tikro algoritmo implementacijas.
+Enemy next action algoritmas gali buti panaudotas su strategy.
+Tarkim butu daug skirtingu pagal enemy sunkumo lygi veiksmo atlikimo
+algoritmu
 
 Observer - Define a one-to-many dependency between objects so that
 when one object changes state, all its dependents are notified and
@@ -16,11 +22,28 @@ updated automatically.
 Notifyinti galima pvz kad zaidejo life'ai pasieke tam tikra kieki
 ir kad tarkim del to priesai pasidarytu agresyvesni ar pns.
 
-Builder - nelabai suprantu šitą.
+Builder - nelabai sugalvoju, kaip galima pritaikyti
 
 L2:
 
+Prototype -  "store one generic 'Elf' character with initial properties and
+create Elf instances by cloning it." Musu atveju butu galima tureti Enemy
+su initial properties ir kurti ju instances klonuojant juos, bet nezinau 
+ar taip bus gerai.
+
+Decorator - su juo galima pvz: naudoti HUDDecorator, kuris dekoruotu zaidimo
+vaizda su hud elementais - kiek hp turi, kokius tarkim spec efektus gali
+naudoti (pvz kaip HUD ant strateginiu geimu)
+
+Command - encapsulate game functionality as commands which can be typed 
+into a console, stored and replayed, or even scripted to help test the game
+
 Adapter - Boss klase bus, kuris nebus Enemy, tai reiks adapterio tarp ju.
+
+Facade - "simplify complex 3rd party libraries by providing a simpler 
+interface to make your life easier later."
+
+Bridge - 
 
 Klasės:
 Player
@@ -43,3 +66,4 @@ IArmor
 ArmorA
 ArmorB
 ArmorC
+Action - ka padarys Enemy (paeis, issaus).
