@@ -2,8 +2,8 @@
 {
     public sealed class Map
     {
-        private static volatile Map instance;
-        private static object syncRoot = new object();
+        private static volatile Map _instance;
+        private static readonly object SyncRoot = new object();
 
         private Map() { }
 
@@ -11,16 +11,16 @@
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    lock (syncRoot)
+                    lock (SyncRoot)
                     {
-                        if (instance == null)
-                            instance = new Map();
+                        if (_instance == null)
+                            _instance = new Map();
                     }
                 }
 
-                return instance;
+                return _instance;
             }
         }
     }
