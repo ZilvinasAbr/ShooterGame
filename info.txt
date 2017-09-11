@@ -3,7 +3,7 @@ https://gamedev.stackexchange.com/questions/4157/what-are-some-programming-desig
 
 L1:
 
-Singleton - pvz zaidimo map'as yra singletonas
+Singleton - pvz zaidimo map'as yra singletonas, arba zaidejo input gavimo klase, pvz Keyboard ar mouse.
 
 Factory - Enemies sukurimui galima panaudoti.
 
@@ -15,6 +15,7 @@ Strategy - Leidzia naudoti ivairias tam tikro algoritmo implementacijas.
 Enemy next action algoritmas gali buti panaudotas su strategy.
 Tarkim butu daug skirtingu pagal enemy sunkumo lygi veiksmo atlikimo
 algoritmu
+"Lets you change out AI strategies elegantly."
 
 Observer - Define a one-to-many dependency between objects so that
 when one object changes state, all its dependents are notified and
