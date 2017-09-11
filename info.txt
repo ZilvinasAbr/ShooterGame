@@ -1,4 +1,4 @@
-﻿Cia gera info kaip galima ant Game Development panaudoti design patterns:
+Cia gera info kaip galima ant Game Development panaudoti design patterns:
 https://gamedev.stackexchange.com/questions/4157/what-are-some-programming-design-patterns-that-are-useful-in-game-development
 
 L1:
@@ -45,6 +45,10 @@ Facade - "simplify complex 3rd party libraries by providing a simpler
 interface to make your life easier later."
 
 Bridge - 
+
+L4:
+
+Chain of responsibility - "handle input as a chain of handlers, eg. global keys (eg. for screen shots), then the GUI (eg. in case a text box is focused or a menu is up), then the game (eg. for moving a character)"
 
 Klasės:
 Player
