@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace Shooter.Classes
 {
     class Player1 : IPlayer, IPlayerSubject
     {
-        private IList<IEnemyObserver> _enemyObservers;
+        private readonly IList<IEnemyObserver> _enemyObservers;
 
         public int LifePoints { get; set; }
 

@@ -56,13 +56,14 @@ Composite -
 
 Flyweight -
 
-State -
+State - Galima butu zaidimo state'a saugoti - sustabdytas, nepradetas ir panasiai
 
 Proxy -
 
 L4:
 
-Chain of responsibility - "handle input as a chain of handlers, eg. global keys (eg. for screen shots), then the GUI (eg. in case a text box is focused or a menu is up), then the game (eg. for moving a character)"
+Chain of responsibility - "handle input as a chain of handlers, eg. global keys (eg. for screen shots), then the 
+GUI (eg. in case a text box is focused or a menu is up), then the game (eg. for moving a character)"
 
 Interpreter -
 
