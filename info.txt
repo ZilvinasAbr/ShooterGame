@@ -55,7 +55,9 @@ Bridge -
 
 L3:
 
-Template Method - 
+Template Method - set up a generic 'combat' routine, with various hook functions to handle each step, 
+eg. decrement ammo, calculate hit chance, resolve hit or miss, calculate damage, and each type of 
+attack skill will implement the methods in their own specific way
 
 Iterator -
 
