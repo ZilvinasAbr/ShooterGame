@@ -23,7 +23,14 @@ updated automatically.
 Notifyinti galima pvz kad zaidejo life'ai pasieke tam tikra kieki
 ir kad tarkim del to priesai pasidarytu agresyvesni ar pns.
 
-Builder - nelabai sugalvoju, kaip galima pritaikyti
+Builder - Patternas kuris taikomas konstruoti sudėtingą objektą.
+ Būtų galima tai taikyti tarkim boso sukūrimui.
+ Naudojami metodai - setWeapon(), setHp(), setSpeed(). EG 
+
+Fruit fruit = new FruitBuilder().setName("apple")
+        .setColor("red")
+        .setFirmness("crunchy")
+        .build();
 
 L2:
 
