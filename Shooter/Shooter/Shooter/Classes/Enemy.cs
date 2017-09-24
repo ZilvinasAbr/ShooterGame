@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shooter.Interfaces;
+using System;
 
 namespace Shooter.Classes
 {
@@ -12,7 +13,12 @@ namespace Shooter.Classes
             _player = player;
         }
 
-        public void Update()
+		public void Attack()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Update()
         {
             _playerLifePoints = _player.LifePoints;
             Console.WriteLine($"Enemy notified of life points {_playerLifePoints}");

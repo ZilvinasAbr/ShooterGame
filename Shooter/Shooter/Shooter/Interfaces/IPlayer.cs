@@ -1,4 +1,4 @@
-﻿namespace Shooter.Classes
+﻿namespace Shooter.Interfaces
 {
     interface IPlayer
     {

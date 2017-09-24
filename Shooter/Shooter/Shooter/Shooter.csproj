@@ -42,15 +42,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Action.cs" />
+    <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\Enemy.cs" />
-    <Compile Include="Classes\IEnemy.cs" />
-    <Compile Include="Classes\IEnemyObserver.cs" />
-    <Compile Include="Classes\INextAction.cs" />
-    <Compile Include="Classes\IPlayer.cs" />
-    <Compile Include="Classes\IPlayerSubject.cs" />
+    <Compile Include="Interfaces\IBoss.cs" />
+    <Compile Include="Interfaces\IBossBuilder.cs" />
+    <Compile Include="Interfaces\IEnemy.cs" />
+    <Compile Include="Interfaces\IEnemyObserver.cs" />
+    <Compile Include="Interfaces\INextAction.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
+    <Compile Include="Interfaces\IPlayerSubject.cs" />
     <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\Player1.cs" />
+    <Compile Include="Classes\Weapon.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="PatternClasses\BossBuilder.cs" />
+    <Compile Include="PatternClasses\EnemyToBossAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

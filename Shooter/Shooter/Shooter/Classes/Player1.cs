@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Shooter.Interfaces;
+using System.Collections.Generic;
 
 namespace Shooter.Classes
 {
