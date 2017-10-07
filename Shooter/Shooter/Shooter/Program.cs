@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using Shooter.Classes;
+using Shooter.Enums;
+using Shooter.Interfaces;
+using Shooter.PatternClasses;
 
 namespace Shooter
 {
@@ -34,6 +37,24 @@ namespace Shooter
             player1.LifePoints = 90;
             player1.DetachObserver(enemies[0]);
             player1.Notify();
+
+			var weaponType = WeaponType.Pistol;
+			IWeaponFactory factory = null;
+
+			switch(weaponType)
+			{
+				case WeaponType.Pistol:
+					factory = new PistolFactory();
+					break;
+				case WeaponType.Bazooka:
+					factory = new BazookaFactory();
+					break;
+				case WeaponType.Shotgun:
+					factory = new ShotgunFactory();
+					break;
+			}
+
+			var weapon = factory.CreateWeapon();
         }
 
         /// <summary>

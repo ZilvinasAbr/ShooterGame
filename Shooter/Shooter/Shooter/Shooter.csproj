@@ -42,8 +42,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Classes\Action.cs" />
+    <Compile Include="Classes\Bazooka.cs" />
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Pistol.cs" />
+    <Compile Include="Classes\Shotgun.cs" />
+    <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
     <Compile Include="Interfaces\IBossBuilder.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
@@ -55,8 +59,13 @@
     <Compile Include="Classes\Player1.cs" />
     <Compile Include="Classes\Weapon.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Interfaces\IWeapon.cs" />
+    <Compile Include="Interfaces\IWeaponFactory.cs" />
+    <Compile Include="PatternClasses\BazookaFactory.cs" />
     <Compile Include="PatternClasses\BossBuilder.cs" />
     <Compile Include="PatternClasses\EnemyToBossAdapter.cs" />
+    <Compile Include="PatternClasses\PistolFactory.cs" />
+    <Compile Include="PatternClasses\ShotgunFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
