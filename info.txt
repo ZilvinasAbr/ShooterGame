@@ -17,6 +17,9 @@ Tarkim butu daug skirtingu pagal enemy sunkumo lygi veiksmo atlikimo
 algoritmu
 "Lets you change out AI strategies elegantly."
 
+Jei naudosim kulka tai tarkim butu bazookos kulkos parametras (Follow). Pagal ji naudotume kulkos skriejima
+ar tiesiai ar sektu pagal pvz deikstra ar kita kelio paieskos alg.
+
 Observer - Define a one-to-many dependency between objects so that
 when one object changes state, all its dependents are notified and
 updated automatically.
