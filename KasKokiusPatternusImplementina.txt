@@ -1,0 +1,10 @@
+﻿Žilvinas:
+Observer
+
+Mantas:
+
+Ernestas:
+
+Kartu implementinti:
+
+Singleton
