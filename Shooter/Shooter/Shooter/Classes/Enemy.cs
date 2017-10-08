@@ -3,20 +3,17 @@ using System;
 
 namespace Shooter.Classes
 {
-    class Enemy : IEnemy, IEnemyObserver
+    abstract class Enemy : IEnemy, IEnemyObserver
     {
         private readonly IPlayer _player;
         private int _playerLifePoints;
 
-        public Enemy(IPlayer player)
+        protected Enemy(IPlayer player)
         {
             _player = player;
         }
 
-		public void Attack()
-		{
-			throw new NotImplementedException();
-		}
+        public abstract void Attack();
 
 		public void Update()
         {

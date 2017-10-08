@@ -45,6 +45,8 @@
     <Compile Include="Classes\Bazooka.cs" />
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\EnemyA.cs" />
+    <Compile Include="Classes\EnemyB.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
     <Compile Include="Enums\WeaponType.cs" />

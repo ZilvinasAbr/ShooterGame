@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using Shooter.Classes;
 using Shooter.Enums;
 using Shooter.Interfaces;
@@ -16,14 +15,15 @@ namespace Shooter
     {
         static void ObserverExample()
         {
-            Console.WriteLine("Running example for L1");
+            Console.WriteLine("Running Observer Example");
 
             var player1 = new Player1 {LifePoints = 100};
+            var pistol = new Pistol();
             var enemies = new List<Enemy>
             {
-                new Enemy(player1),
-                new Enemy(player1),
-                new Enemy(player1)
+                new EnemyA(pistol, player1),
+                new EnemyA(pistol, player1),
+                new EnemyA(pistol, player1)
             };
 
             foreach (var enemy in enemies)
@@ -37,24 +37,42 @@ namespace Shooter
             player1.LifePoints = 90;
             player1.DetachObserver(enemies[0]);
             player1.Notify();
+        }
 
-			var weaponType = WeaponType.Pistol;
-			IWeaponFactory factory = null;
+        private static void BridgeExample()
+        {
+            Console.WriteLine("Running Bridge Example");
 
-			switch(weaponType)
-			{
-				case WeaponType.Pistol:
-					factory = new PistolFactory();
-					break;
-				case WeaponType.Bazooka:
-					factory = new BazookaFactory();
-					break;
-				case WeaponType.Shotgun:
-					factory = new ShotgunFactory();
-					break;
-			}
+            IPlayer player = new Player1();
+            IWeapon bazooka = new Bazooka();
+            IWeapon pistol = new Pistol();
 
-			var weapon = factory.CreateWeapon();
+            Enemy enemyAWithBazooka = new EnemyA(bazooka, player);
+            Enemy enemyBWithPistol = new EnemyB(pistol, player);
+
+            enemyAWithBazooka.Attack();
+            enemyBWithPistol.Attack();
+        }
+
+        private static void ProbablyGuessAbstractFactoryExample()
+        {
+            var weaponType = WeaponType.Pistol;
+            IWeaponFactory factory = null;
+
+            switch (weaponType)
+            {
+                case WeaponType.Pistol:
+                    factory = new PistolFactory();
+                    break;
+                case WeaponType.Bazooka:
+                    factory = new BazookaFactory();
+                    break;
+                case WeaponType.Shotgun:
+                    factory = new ShotgunFactory();
+                    break;
+            }
+
+            var weapon = factory.CreateWeapon();
         }
 
         /// <summary>
@@ -64,6 +82,8 @@ namespace Shooter
         static void Main()
         {
             ObserverExample();
+            BridgeExample();
+            ProbablyGuessAbstractFactoryExample();
 
             using (var game = new Game1())
                 game.Run();
