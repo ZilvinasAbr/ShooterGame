@@ -51,7 +51,8 @@ Adapter - Boss klase bus, kuris nebus Enemy, tai reiks adapterio tarp ju.
 Facade - "simplify complex 3rd party libraries by providing a simpler 
 interface to make your life easier later."
 
-Bridge - 
+Bridge - Padaryti Bridge pvz tarp Enemy ir Gun, arba dar "abstrakciau" tarp Agent ir Gun (Agent tai
+Enemy arba Player)
 
 L3:
 
