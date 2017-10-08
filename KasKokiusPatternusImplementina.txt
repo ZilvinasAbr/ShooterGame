@@ -2,8 +2,10 @@
 Observer
 
 Mantas:
+Factory
 
 Ernestas:
+AbstractFactory
 
 Kartu implementinti:
 
