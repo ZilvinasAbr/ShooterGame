@@ -15,7 +15,7 @@ namespace Shooter.Classes
 
         public abstract void Attack();
 
-		public void Update()
+		public virtual void Update()
         {
             _playerLifePoints = _player.LifePoints;
             Console.WriteLine($"Enemy notified of life points {_playerLifePoints}");

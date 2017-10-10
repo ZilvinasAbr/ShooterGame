@@ -13,7 +13,7 @@ namespace CommandTest
 
         public void Execute()
         {
-            _enemy.SwitchOff();
+            _enemy.Die();
         }
     }
 }

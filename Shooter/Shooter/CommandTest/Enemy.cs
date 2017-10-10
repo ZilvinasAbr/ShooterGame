@@ -11,5 +11,10 @@ namespace CommandTest
         {
             Console.WriteLine($"Move {x} and {y}");
         }
+
+        public virtual void Die()
+        {
+            Console.WriteLine("Enemy died");
+        }
     }
 }

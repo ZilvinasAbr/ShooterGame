@@ -47,6 +47,7 @@
     <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\EnemyA.cs" />
     <Compile Include="Classes\EnemyB.cs" />
+    <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
     <Compile Include="Enums\WeaponType.cs" />
