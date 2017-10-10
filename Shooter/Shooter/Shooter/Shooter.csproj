@@ -54,7 +54,6 @@
     <Compile Include="Interfaces\IBossBuilder.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
     <Compile Include="Interfaces\IEnemyObserver.cs" />
-    <Compile Include="Interfaces\INextAction.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IPlayerSubject.cs" />
     <Compile Include="Classes\Map.cs" />
