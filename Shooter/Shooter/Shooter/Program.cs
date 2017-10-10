@@ -54,6 +54,13 @@ namespace Shooter
             enemyBWithPistol.Attack();
         }
 
+        private static void SingletonExample()
+        {
+            Logger.Instance.Error("Error message");
+            Logger.Instance.Info("Info message");
+            Logger.Instance.Debug("Debug message");
+        }
+
         private static void ProbablyGuessAbstractFactoryExample()
         {
             var weaponType = WeaponType.Pistol;
@@ -84,6 +91,7 @@ namespace Shooter
             ObserverExample();
             BridgeExample();
             ProbablyGuessAbstractFactoryExample();
+            SingletonExample();
 
             using (var game = new Game1())
                 game.Run();
