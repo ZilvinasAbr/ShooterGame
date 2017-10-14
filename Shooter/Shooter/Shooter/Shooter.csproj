@@ -45,6 +45,9 @@
     <Compile Include="Classes\Bazooka.cs" />
     <Compile Include="Classes\Boss.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\EnemyA.cs" />
+    <Compile Include="Classes\EnemyB.cs" />
+    <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
     <Compile Include="Enums\WeaponType.cs" />
@@ -52,7 +55,6 @@
     <Compile Include="Interfaces\IBossBuilder.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
     <Compile Include="Interfaces\IEnemyObserver.cs" />
-    <Compile Include="Interfaces\INextAction.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IPlayerSubject.cs" />
     <Compile Include="Classes\Map.cs" />

@@ -1,4 +1,5 @@
-﻿using Shooter.Interfaces;
+﻿using System;
+using Shooter.Interfaces;
 
 namespace Shooter.Classes
 {
@@ -6,7 +7,7 @@ namespace Shooter.Classes
 	{
 		public void Shoot()
 		{
-			throw new System.NotImplementedException();
+		    Console.WriteLine("Pistol shoots");
 		}
 	}
 }
