@@ -50,6 +50,8 @@
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
+    <Compile Include="Classes\SMG.cs" />
+    <Compile Include="Enums\WeaponName.cs" />
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
     <Compile Include="Interfaces\IBossBuilder.cs" />
@@ -63,11 +65,11 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Interfaces\IWeaponFactory.cs" />
-    <Compile Include="PatternClasses\BazookaFactory.cs" />
     <Compile Include="PatternClasses\BossBuilder.cs" />
     <Compile Include="PatternClasses\EnemyToBossAdapter.cs" />
-    <Compile Include="PatternClasses\PistolFactory.cs" />
-    <Compile Include="PatternClasses\ShotgunFactory.cs" />
+    <Compile Include="PatternClasses\HeavyWeaponFactory.cs" />
+    <Compile Include="PatternClasses\LightWeaponFactory.cs" />
+    <Compile Include="PatternClasses\WeaponFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,8 +2,7 @@
 {
 	public enum WeaponType
 	{
-		Pistol,
-		Shotgun,
-		Bazooka
+		Heavy,
+		Light
 	}
 }

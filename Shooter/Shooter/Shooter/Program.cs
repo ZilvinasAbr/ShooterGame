@@ -61,25 +61,13 @@ namespace Shooter
             Logger.Instance.Debug("Debug message");
         }
 
-        private static void ProbablyGuessAbstractFactoryExample()
+        private static void AbstractFactoryExample()
         {
-            var weaponType = WeaponType.Pistol;
-            IWeaponFactory factory = null;
+            var weaponFamily = WeaponType.Heavy;
+			var weapon = WeaponName.Bazooka;
 
-            switch (weaponType)
-            {
-                case WeaponType.Pistol:
-                    factory = new PistolFactory();
-                    break;
-                case WeaponType.Bazooka:
-                    factory = new BazookaFactory();
-                    break;
-                case WeaponType.Shotgun:
-                    factory = new ShotgunFactory();
-                    break;
-            }
-
-            var weapon = factory.CreateWeapon();
+			var factory = WeaponFactory.CreateFactory(weaponFamily);
+			var createdWeapon = factory.CreateWeapon(weapon);
         }
 
         /// <summary>
@@ -90,7 +78,7 @@ namespace Shooter
         {
             ObserverExample();
             BridgeExample();
-            ProbablyGuessAbstractFactoryExample();
+			AbstractFactoryExample();
             SingletonExample();
 
             using (var game = new Game1())
