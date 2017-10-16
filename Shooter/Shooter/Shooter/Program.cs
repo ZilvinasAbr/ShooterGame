@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DeenGames.Utils.AStarPathFinder;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Shooter.Classes;
 using Shooter.Enums;
 using Shooter.Interfaces;
@@ -70,6 +73,16 @@ namespace Shooter
 			var createdWeapon = factory.CreateWeapon(weapon);
         }
 
+        private static void AdapterExample()
+        {
+            var map = new Map();
+            IPathFinding pathfindingAdapter = new PathfindingAdapter();
+
+            var nextPoint = pathfindingAdapter.NextPoint(map, new Point(0, 0), new Point(0, 5));
+
+            Console.WriteLine($"Next point: {nextPoint}");
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -80,6 +93,7 @@ namespace Shooter
             BridgeExample();
 			AbstractFactoryExample();
             SingletonExample();
+            AdapterExample();
 
             using (var game = new Game1())
                 game.Run();
