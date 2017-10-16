@@ -5,7 +5,6 @@ namespace Shooter.Classes
 {
 	public class Boss : IBoss
 	{
-		private readonly EnemyToBossAdapter adapter;
 		public int HP { get; set; }
 		public int Speed { get; set; }
 		public Weapon Weapon { get; set; }
@@ -21,7 +20,6 @@ namespace Shooter.Classes
 
 		public void BossAttack()
 		{
-			adapter.BossAttack();
 		}
 	}
 }
