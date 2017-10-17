@@ -72,7 +72,7 @@
     <Compile Include="PatternClasses\BossBuilder.cs" />
     <Compile Include="PatternClasses\HeavyWeaponFactory.cs" />
     <Compile Include="PatternClasses\LightWeaponFactory.cs" />
-    <Compile Include="PatternClasses\PathfindingAdapter.cs" />
+    <Compile Include="PatternClasses\PathFindingAdapter.cs" />
     <Compile Include="PatternClasses\WeaponFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

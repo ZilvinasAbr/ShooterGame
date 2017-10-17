@@ -22,7 +22,7 @@ namespace Shooter
 
             var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
-            var enemies = new List<Enemy>
+            var enemies = new List<IEnemyObserver>
             {
                 new EnemyA(pistol, player1),
                 new EnemyA(pistol, player1),
@@ -76,7 +76,7 @@ namespace Shooter
         private static void AdapterExample()
         {
             var map = new Map();
-            IPathFinding pathfindingAdapter = new PathfindingAdapter();
+            IPathFinding pathfindingAdapter = new PathFindingAdapter(map.Width, map.Height);
 
             var nextPoint = pathfindingAdapter.NextPoint(map, new Point(0, 0), new Point(0, 5));
 

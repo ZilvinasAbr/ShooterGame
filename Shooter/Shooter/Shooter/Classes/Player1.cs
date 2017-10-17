@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Shooter.Classes
 {
-    class Player1 : IPlayer, IPlayerSubject
+    class Player1 : IPlayer, IPlayerSubject, ITile
     {
         private readonly IList<IEnemyObserver> _enemyObservers;
 

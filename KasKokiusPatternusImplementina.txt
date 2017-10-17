@@ -11,3 +11,4 @@ AbstractFactory
 Kartu implementinti:
 
 Singleton
+Adapter

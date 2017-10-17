@@ -3,9 +3,9 @@ using Shooter.Interfaces;
 
 namespace Shooter.Classes
 {
-	public class Pistol : Weapon, IWeapon
+	public class Pistol : Weapon
 	{
-		public void Shoot()
+		public override void Shoot()
 		{
 		    Console.WriteLine("Pistol shoots");
 		}

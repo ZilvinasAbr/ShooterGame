@@ -1,6 +1,6 @@
 ﻿namespace Shooter.Interfaces
 {
-    interface IPlayer
+    public interface IPlayer
     {
         int LifePoints { get; set; }
     }

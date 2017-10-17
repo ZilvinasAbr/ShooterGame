@@ -3,9 +3,9 @@ using System;
 
 namespace Shooter.Classes
 {
-	public class SMG : IWeapon
+	public class SMG : Weapon
 	{
-		public void Shoot()
+		public override void Shoot()
 		{
 			throw new NotImplementedException();
 		}

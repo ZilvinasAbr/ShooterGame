@@ -3,9 +3,9 @@ using Shooter.Interfaces;
 
 namespace Shooter.Classes
 {
-	public class Bazooka : Weapon, IWeapon
+	public class Bazooka : Weapon
 	{
-		public void Shoot()
+		public override void Shoot()
 		{
 		    Console.WriteLine("Bazooka shoots");
 		}

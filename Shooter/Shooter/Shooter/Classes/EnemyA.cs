@@ -2,23 +2,20 @@
 
 namespace Shooter.Classes
 {
-    class EnemyA : Enemy, IEnemy
+    public class EnemyA : Enemy
     {
-        private IWeapon _weapon;
-
-        public EnemyA(IWeapon weapon, IPlayer player) : base(player)
+        public EnemyA(IWeapon weapon, IPlayer player) : base(weapon, player)
         {
-            _weapon = weapon;
         }
 
         public void SetWeapon(IWeapon weapon)
         {
-            _weapon = weapon;
+            Weapon = weapon;
         }
 
         public override void Attack()
         {
-            _weapon.Shoot();
+            Weapon.Shoot();
         }
     }
 }

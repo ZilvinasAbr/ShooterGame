@@ -2,11 +2,11 @@
 
 namespace Shooter.Classes
 {
-	public class Shotgun : Weapon, IWeapon
+	public class Shotgun : Weapon
 	{
-		public void Shoot()
-		{
-			throw new System.NotImplementedException();
-		}
-	}
+        public override void Shoot()
+        {
+            throw new System.NotImplementedException();
+        }
+    }
 }
