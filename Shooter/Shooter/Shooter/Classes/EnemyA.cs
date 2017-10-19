@@ -4,7 +4,7 @@ namespace Shooter.Classes
 {
     public class EnemyA : Enemy
     {
-        public EnemyA(IWeapon weapon, IPlayer player) : base(weapon, player)
+        public EnemyA(IWeapon weapon, IPlayer player, int lifePoints) : base(weapon, player, lifePoints)
         {
         }
 

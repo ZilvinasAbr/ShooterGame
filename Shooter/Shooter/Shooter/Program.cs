@@ -7,6 +7,7 @@ using Shooter.Classes;
 using Shooter.Enums;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
+using Shooter.FactoryClasses;
 
 namespace Shooter
 {
@@ -24,9 +25,9 @@ namespace Shooter
             var pistol = new Pistol();
             var enemies = new List<IEnemyObserver>
             {
-                new EnemyA(pistol, player1),
-                new EnemyA(pistol, player1),
-                new EnemyA(pistol, player1)
+                new EnemyA(pistol, player1, 50),
+                new EnemyA(pistol, player1, 50),
+                new EnemyA(pistol, player1, 50)
             };
 
             foreach (var enemy in enemies)
@@ -42,6 +43,18 @@ namespace Shooter
             player1.Notify();
         }
 
+        private static void FactoryExample()
+        {
+
+            Console.WriteLine("Running Factory Example");
+            var player1 = new Player1 { LifePoints = 100 };
+            var pistol = new Pistol();
+            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50);
+            Console.WriteLine("First enemy has " + enemyA.GetLifePoints() + " life points and his type is " + enemyA.GetType());
+            var enemyB = EnemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75);
+            Console.WriteLine("Second enemy has " + enemyB.GetLifePoints() + " life points and his type is " + enemyB.GetType());
+        }
+
         private static void BridgeExample()
         {
             Console.WriteLine("Running Bridge Example");
@@ -50,8 +63,8 @@ namespace Shooter
             IWeapon bazooka = new Bazooka();
             IWeapon pistol = new Pistol();
 
-            Enemy enemyAWithBazooka = new EnemyA(bazooka, player);
-            Enemy enemyBWithPistol = new EnemyB(pistol, player);
+            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50);
+            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50);
 
             enemyAWithBazooka.Attack();
             enemyBWithPistol.Attack();
@@ -94,6 +107,7 @@ namespace Shooter
 			AbstractFactoryExample();
             SingletonExample();
             AdapterExample();
+            FactoryExample();
 
             using (var game = new Game1())
                 game.Run();

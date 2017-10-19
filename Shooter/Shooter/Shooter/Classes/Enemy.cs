@@ -8,11 +8,23 @@ namespace Shooter.Classes
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         private int _playerLifePoints;
+        private int LifePoints;
 
-        protected Enemy(IWeapon weapon, IPlayer player)
+        protected Enemy(IWeapon weapon, IPlayer player, int lifePoints)
         {
             Weapon = weapon;
             _player = player;
+            LifePoints = lifePoints;
+        }
+
+        public int GetLifePoints()
+        {
+            return LifePoints;
+        }
+
+        public void SetLifePoints(int lifePoints)
+        {
+            LifePoints = lifePoints;
         }
 
         public abstract void Attack();

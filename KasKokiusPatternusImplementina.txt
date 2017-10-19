@@ -3,10 +3,10 @@ Observer
 Bridge
 
 Mantas:
-Factory
+AbstractFactory
 
 Ernestas:
-AbstractFactory
+Factory
 
 Kartu implementinti:
 
