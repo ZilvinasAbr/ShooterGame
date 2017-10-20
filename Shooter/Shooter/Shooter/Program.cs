@@ -21,13 +21,15 @@ namespace Shooter
         {
             Console.WriteLine("Running Observer Example");
 
+            var mockPosition = Vector2.Zero;
+
             var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
             var enemies = new List<IEnemyObserver>
             {
-                new EnemyA(pistol, player1, 50),
-                new EnemyA(pistol, player1, 50),
-                new EnemyA(pistol, player1, 50)
+                new EnemyA(pistol, player1, 50, mockPosition),
+                new EnemyA(pistol, player1, 50, mockPosition),
+                new EnemyA(pistol, player1, 50, mockPosition)
             };
 
             foreach (var enemy in enemies)
@@ -45,13 +47,13 @@ namespace Shooter
 
         private static void FactoryExample()
         {
-
+            var mockPosition = Vector2.Zero;
             Console.WriteLine("Running Factory Example");
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
-            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50);
+            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
             Console.WriteLine("First enemy has " + enemyA.GetLifePoints() + " life points and his type is " + enemyA.GetType());
-            var enemyB = EnemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75);
+            var enemyB = EnemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition);
             Console.WriteLine("Second enemy has " + enemyB.GetLifePoints() + " life points and his type is " + enemyB.GetType());
         }
 
@@ -78,12 +80,13 @@ namespace Shooter
         {
             Console.WriteLine("Running Bridge Example");
 
+            var mockPosition = Vector2.Zero;
             IPlayer player = new Player1();
             IWeapon bazooka = new Bazooka();
             IWeapon pistol = new Pistol();
 
-            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50);
-            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50);
+            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50, mockPosition);
+            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50, mockPosition);
 
             enemyAWithBazooka.Attack();
             enemyBWithPistol.Attack();
@@ -107,10 +110,11 @@ namespace Shooter
 
         private static void AdapterExample()
         {
-            var map = new Map();
-            IPathFinding pathfindingAdapter = new PathFindingAdapter(map.Width, map.Height);
+            int mapSize = 32;
+            var map = new Map(mapSize, mapSize);
+            IPathFinding pathfindingAdapter = new PathFindingAdapter(mapSize, mapSize);
 
-            var nextPoint = pathfindingAdapter.NextPoint(map, new Point(0, 0), new Point(0, 5));
+            var nextPoint = pathfindingAdapter.NextPoint(map.MapObjects, new Point(0, 0), new Point(0, 5));
 
             Console.WriteLine($"Next point: {nextPoint}");
         }

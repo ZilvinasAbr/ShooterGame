@@ -1,24 +1,18 @@
-﻿namespace Shooter.Classes
+﻿using System.Collections.Generic;
+
+namespace Shooter.Classes
 {
     public class Map
     {
         public int Width{ get; }
         public int Height { get; }
-        public ITile[,] Tiles { get; set; }
+        public IList<IMapObject> MapObjects { get; set; }
 
-        public Map()
+        public Map(int width, int height)
         {
-            Width = 32;
-            Height = 32;
-            Tiles = new ITile[Width,Height];
-
-            for (var i = 0; i < Width; i++)
-            {
-                for (var j = 0; j < Height; j++)
-                {
-                    Tiles[i, j] = new EmptyTile();
-                }
-            }
+            Width = width;
+            Height = height;
+            MapObjects = new List<IMapObject>();
         }
     }
 }

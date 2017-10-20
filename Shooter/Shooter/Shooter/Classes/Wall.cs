@@ -1,6 +1,9 @@
-﻿namespace Shooter.Classes
+﻿using Microsoft.Xna.Framework;
+
+namespace Shooter.Classes
 {
-    public class Wall : ITile
+    public class Wall : IMapObject
     {
+        public Vector2 Position { get; set; }
     }
 }

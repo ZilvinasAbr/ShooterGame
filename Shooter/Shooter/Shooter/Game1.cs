@@ -11,6 +11,7 @@ namespace Shooter
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        private Texture2D _playerTexture;
 
         public Game1()
         {
@@ -40,6 +41,7 @@ namespace Shooter
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
+            _playerTexture = Content.Load<Texture2D>("player");
         }
 
         /// <summary>
@@ -75,6 +77,10 @@ namespace Shooter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(_playerTexture, new Vector2(0, 0));
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
