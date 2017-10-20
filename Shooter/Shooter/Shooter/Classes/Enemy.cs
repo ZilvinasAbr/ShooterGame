@@ -1,30 +1,34 @@
 ﻿using Shooter.Interfaces;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Shooter.Classes
 {
-    public abstract class Enemy : IEnemy, IEnemyObserver
+    public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject
     {
+        public Vector2 Position { get; set; }
+
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         private int _playerLifePoints;
-        private int LifePoints;
+        private int _lifePoints;
 
-        protected Enemy(IWeapon weapon, IPlayer player, int lifePoints)
+        protected Enemy(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position)
         {
             Weapon = weapon;
             _player = player;
-            LifePoints = lifePoints;
+            _lifePoints = lifePoints;
+            Position = position;
         }
 
         public int GetLifePoints()
         {
-            return LifePoints;
+            return _lifePoints;
         }
 
         public void SetLifePoints(int lifePoints)
         {
-            LifePoints = lifePoints;
+            _lifePoints = lifePoints;
         }
 
         public abstract void Attack();
