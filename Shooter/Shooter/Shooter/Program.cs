@@ -47,8 +47,8 @@ namespace Shooter
 
         private static void FactoryExample()
         {
-            var mockPosition = Vector2.Zero;
             Console.WriteLine("Running Factory Example");
+            var mockPosition = Vector2.Zero;
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
             var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
@@ -60,9 +60,12 @@ namespace Shooter
         private static void PrototypeExample()
         {
             Console.WriteLine("Running Prototype Example");
+            var mockPosition = Vector2.Zero;
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
-            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50);
+
+            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
+
             Console.WriteLine("First enemy has " + enemyA.GetLifePoints() + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
             var enemyAPrototypeFactory = new EnemyPrototype(enemyA);
             var enemyA1 = enemyAPrototypeFactory.Clone();
