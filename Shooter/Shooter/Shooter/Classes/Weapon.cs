@@ -10,5 +10,9 @@ namespace Shooter.Classes
 		public int Range { get; set; }
 		public int Magazine { get; set; }
 	    public abstract void Shoot();
+        public Weapon Clone()
+        {
+            return (Weapon)this.MemberwiseClone();
+        }
 	}
 }

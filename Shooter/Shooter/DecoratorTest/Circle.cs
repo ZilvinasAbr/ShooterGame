@@ -6,7 +6,7 @@ namespace DecoratorTest
     {
         public void Draw()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Shape: circle");
         }
     }
 }

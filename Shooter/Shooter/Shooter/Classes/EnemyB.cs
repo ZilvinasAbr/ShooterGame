@@ -8,11 +8,6 @@ namespace Shooter.Classes
         {
         }
 
-        public void SetWeapon(IWeapon weapon)
-        {
-            Weapon = weapon;
-        }
-
         public override void Attack()
         {
             Weapon.Shoot();

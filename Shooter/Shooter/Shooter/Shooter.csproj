@@ -57,7 +57,8 @@
     <Compile Include="Enums\EnemyType.cs" />
     <Compile Include="Enums\WeaponName.cs" />
     <Compile Include="Enums\WeaponType.cs" />
-    <Compile Include="FactoryClasses\EnemiesFactory.cs" />
+    <Compile Include="PatternClasses\EnemiesFactory.cs" />
+    <Compile Include="PatternClasses\EnemyPrototype.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
     <Compile Include="Interfaces\IBossBuilder.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />

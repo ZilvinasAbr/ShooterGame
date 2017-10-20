@@ -55,6 +55,25 @@ namespace Shooter
             Console.WriteLine("Second enemy has " + enemyB.GetLifePoints() + " life points and his type is " + enemyB.GetType());
         }
 
+        private static void PrototypeExample()
+        {
+            Console.WriteLine("Running Prototype Example");
+            var player1 = new Player1 { LifePoints = 100 };
+            var pistol = new Pistol();
+            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50);
+            Console.WriteLine("First enemy has " + enemyA.GetLifePoints() + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
+            var enemyAPrototypeFactory = new EnemyPrototype(enemyA);
+            var enemyA1 = enemyAPrototypeFactory.Clone();
+            Console.WriteLine("Cloned enemy has " + enemyA1.GetLifePoints() + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
+            var enemyA2 = enemyAPrototypeFactory.Clone();
+            Console.WriteLine("Second Cloned enemy has " + enemyA2.GetLifePoints() + " life points and his hash code is " + enemyA2.GetHashCode() + " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
+
+            var enemyA3 = enemyAPrototypeFactory.DeepCopy();
+            Console.WriteLine("Deep Cloned enemy has " + enemyA3.GetLifePoints() + " life points and his hash code is " + enemyA3.GetHashCode() + " and weapon's hash code is " + enemyA3.GetWeapon().GetHashCode());
+            var enemyA4 = enemyAPrototypeFactory.DeepCopy();
+            Console.WriteLine("Second Deep Cloned enemy has " + enemyA4.GetLifePoints() + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
+        }
+
         private static void BridgeExample()
         {
             Console.WriteLine("Running Bridge Example");
@@ -108,6 +127,7 @@ namespace Shooter
             SingletonExample();
             AdapterExample();
             FactoryExample();
+            PrototypeExample();
 
             using (var game = new Game1())
                 game.Run();
