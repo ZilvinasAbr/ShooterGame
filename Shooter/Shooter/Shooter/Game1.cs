@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Shooter.Classes;
 
 namespace Shooter
 {
@@ -9,13 +10,22 @@ namespace Shooter
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        readonly GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+        private Texture2D _backgroundTexture;
         private Texture2D _playerTexture;
+
+        private Map map;
+        private Player1 player;
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = 512,
+                PreferredBackBufferHeight = 512
+            };
+            _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
         }
 
@@ -39,9 +49,14 @@ namespace Shooter
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
+            _backgroundTexture = Content.Load<Texture2D>("background");
             _playerTexture = Content.Load<Texture2D>("player");
+
+            player = new Player1(Vector2.Zero, _playerTexture);
+            map = new Map(16, 16) {BackgroundTexture = _backgroundTexture};
+            map.MapObjects.Add(player);
         }
 
         /// <summary>
@@ -78,9 +93,9 @@ namespace Shooter
 
             // TODO: Add your drawing code here
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(_playerTexture, new Vector2(0, 0));
-            spriteBatch.End();
+            _spriteBatch.Begin();
+            map.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

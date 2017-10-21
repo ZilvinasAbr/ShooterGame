@@ -1,12 +1,17 @@
 ﻿using Shooter.Interfaces;
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Shooter.Classes
 {
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject
     {
         public Vector2 Position { get; set; }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            throw new NotImplementedException();
+        }
 
         private readonly IPlayer _player;
         protected IWeapon Weapon;
