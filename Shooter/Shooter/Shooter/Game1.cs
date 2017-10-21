@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
+using Shooter.Interfaces;
 
 namespace Shooter
 {
@@ -15,7 +18,12 @@ namespace Shooter
         private SpriteBatch _spriteBatch;
         private Texture2D _backgroundTexture;
         private Texture2D _playerTexture;
+        private Texture2D _enemyATexture;
+        private Texture2D _enemyBTexture;
+        private Texture2D _wallTexture;
         private KeyboardState _previousState;
+        private IList<Enemy> _enemies;
+        private IList<Wall> _walls;
 
         private Map _map;
         private Player1 _player;
@@ -56,10 +64,31 @@ namespace Shooter
             // TODO: use this.Content to load your game content here
             _backgroundTexture = Content.Load<Texture2D>("background");
             _playerTexture = Content.Load<Texture2D>("player");
+            _enemyATexture = Content.Load<Texture2D>("enemyA");
+            _enemyBTexture = Content.Load<Texture2D>("enemyB");
+            _wallTexture = Content.Load<Texture2D>("wall");
 
             _player = new Player1(Vector2.Zero, _playerTexture);
             _map = new Map(16, 16) {BackgroundTexture = _backgroundTexture};
             _map.MapObjects.Add(_player);
+            _enemies = new List<Enemy>
+            {
+                new EnemyA(new Bazooka(), _player, 100, new Vector2(5*TileSize, 5*TileSize)){Texture = _enemyATexture},
+                new EnemyB(new Pistol(), _player, 100, new Vector2(6*TileSize, 5*TileSize)){Texture = _enemyBTexture}
+            };
+            _walls = new List<Wall>
+            {
+                new Wall{Position = new Vector2(10*TileSize, 10*TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(11*TileSize, 10*TileSize), Texture = _wallTexture}
+            };
+            foreach (var enemy in _enemies)
+            {
+                _map.MapObjects.Add(enemy);
+            }
+            foreach (var wall in _walls)
+            {
+                _map.MapObjects.Add(wall);
+            }
         }
 
         /// <summary>

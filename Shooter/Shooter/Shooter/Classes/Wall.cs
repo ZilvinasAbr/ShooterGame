@@ -5,10 +5,11 @@ namespace Shooter.Classes
 {
     public class Wall : IMapObject
     {
+        public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public void Draw(SpriteBatch spriteBatch)
         {
-            throw new System.NotImplementedException();
+            spriteBatch.Draw(Texture, Position, Color.White);
         }
     }
 }
