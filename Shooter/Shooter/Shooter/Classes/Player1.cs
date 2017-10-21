@@ -15,6 +15,11 @@ namespace Shooter.Classes
             spriteBatch.Draw(Texture, Position, Color.White);
         }
 
+        public void Update(GameTime gameTime)
+        {
+            
+        }
+
         private readonly IList<IEnemyObserver> _enemyObservers;
 
         public int LifePoints { get; set; }

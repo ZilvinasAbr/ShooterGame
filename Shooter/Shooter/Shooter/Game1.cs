@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
@@ -10,13 +10,15 @@ namespace Shooter
     /// </summary>
     public class Game1 : Game
     {
+        const int TileSize = 32;
         readonly GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Texture2D _backgroundTexture;
         private Texture2D _playerTexture;
+        private KeyboardState _previousState;
 
-        private Map map;
-        private Player1 player;
+        private Map _map;
+        private Player1 _player;
 
         public Game1()
         {
@@ -40,6 +42,7 @@ namespace Shooter
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            _previousState = Keyboard.GetState();
         }
 
         /// <summary>
@@ -54,9 +57,9 @@ namespace Shooter
             _backgroundTexture = Content.Load<Texture2D>("background");
             _playerTexture = Content.Load<Texture2D>("player");
 
-            player = new Player1(Vector2.Zero, _playerTexture);
-            map = new Map(16, 16) {BackgroundTexture = _backgroundTexture};
-            map.MapObjects.Add(player);
+            _player = new Player1(Vector2.Zero, _playerTexture);
+            _map = new Map(16, 16) {BackgroundTexture = _backgroundTexture};
+            _map.MapObjects.Add(_player);
         }
 
         /// <summary>
@@ -79,8 +82,42 @@ namespace Shooter
                 Exit();
 
             // TODO: Add your update logic here
+            UpdatePlayer(gameTime);
 
             base.Update(gameTime);
+        }
+
+        protected void UpdatePlayer(GameTime gameTime)
+        {
+            _player.Update(gameTime);
+
+            var position = _player.Position;
+
+            var keyboardState = Keyboard.GetState();
+
+            if (keyboardState.IsKeyDown(Keys.W) && !_previousState.IsKeyDown(Keys.W))
+            {
+                _player.Position = new Vector2(position.X, position.Y - TileSize);
+            }
+
+            if (keyboardState.IsKeyDown(Keys.S) && !_previousState.IsKeyDown(Keys.S))
+            {
+                _player.Position = new Vector2(position.X, position.Y + TileSize);
+
+            }
+
+            if (keyboardState.IsKeyDown(Keys.A) && !_previousState.IsKeyDown(Keys.A))
+            {
+                _player.Position = new Vector2(position.X - TileSize, position.Y);
+
+            }
+
+            if (keyboardState.IsKeyDown(Keys.D) && !_previousState.IsKeyDown(Keys.D))
+            {
+                _player.Position = new Vector2(position.X + TileSize, position.Y);
+            }
+
+            _previousState = keyboardState;
         }
 
         /// <summary>
@@ -94,7 +131,7 @@ namespace Shooter
             // TODO: Add your drawing code here
 
             _spriteBatch.Begin();
-            map.Draw(_spriteBatch);
+            _map.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);
