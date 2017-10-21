@@ -8,29 +8,19 @@ namespace Shooter.Classes
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject
     {
         public Vector2 Position { get; set; }
+        public int LifePoints { get; set; }
         public abstract void Draw(SpriteBatch spriteBatch);
 
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         private int _playerLifePoints;
-        private int _lifePoints;
 
         protected Enemy(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position)
         {
             Weapon = weapon;
             _player = player;
-            _lifePoints = lifePoints;
+            LifePoints = lifePoints;
             Position = position;
-        }
-
-        public int GetLifePoints()
-        {
-            return _lifePoints;
-        }
-
-        public void SetLifePoints(int lifePoints)
-        {
-            _lifePoints = lifePoints;
         }
 
         public IWeapon GetWeapon()
