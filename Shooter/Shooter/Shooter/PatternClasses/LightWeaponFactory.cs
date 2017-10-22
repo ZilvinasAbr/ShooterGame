@@ -1,12 +1,11 @@
 ﻿using Shooter.Classes;
 using Shooter.Enums;
-using Shooter.Interfaces;
 
 namespace Shooter.PatternClasses
 {
 	public class LightWeaponFactory : WeaponFactory
 	{
-		public override IWeapon CreateWeapon(WeaponName lightWeapon)
+		public override Weapon CreateWeapon(WeaponName lightWeapon)
 		{
 			switch (lightWeapon)
 			{

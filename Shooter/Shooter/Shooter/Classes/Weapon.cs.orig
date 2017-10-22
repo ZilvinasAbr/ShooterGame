@@ -16,6 +16,10 @@ namespace Shooter.Classes
 		public int Range { get; set; }
 		public int Magazine { get; set; }
 
+<<<<<<< Updated upstream
+        public abstract void Shoot();
+
+=======
 		public Weapon(string texture)
 		{
 			var randomPosition = new Random();
@@ -24,7 +28,7 @@ namespace Shooter.Classes
 		}
 
 		public abstract void Shoot();
-
+>>>>>>> Stashed changes
         public Weapon Clone()
         {
             return (Weapon)this.MemberwiseClone();

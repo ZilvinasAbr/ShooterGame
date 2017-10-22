@@ -1,6 +1,6 @@
 ﻿namespace Shooter.Interfaces
 {
-    interface IEnemyObserver
+    public interface IEnemyObserver
     {
         void Update();
     }

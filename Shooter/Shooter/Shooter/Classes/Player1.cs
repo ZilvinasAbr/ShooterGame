@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Shooter.Classes
 {
-    class Player1 : IPlayer, IPlayerSubject, IMapObject
+    public class Player1 : IPlayer, IPlayerSubject, IMapObject
     {
         private readonly IList<IEnemyObserver> _enemyObservers;
         public Texture2D Texture { get; set; }
@@ -52,5 +53,32 @@ namespace Shooter.Classes
                 enemyObserver.Update();
             }
         }
+
+		public void Move(KeyboardState keyboardState, KeyboardState previousState)
+		{
+			ICommand cmd = null;
+
+			if (keyboardState.IsKeyDown(Keys.W) && !previousState.IsKeyDown(Keys.W))
+			{
+				cmd = new MoveForward(this);
+			}
+			if (keyboardState.IsKeyDown(Keys.S) && !previousState.IsKeyDown(Keys.S))
+			{
+				cmd = new MoveBackward(this);
+			}
+			if (keyboardState.IsKeyDown(Keys.A) && !previousState.IsKeyDown(Keys.A))
+			{
+				cmd = new MoveLeft(this);
+			}
+			if (keyboardState.IsKeyDown(Keys.D) && !previousState.IsKeyDown(Keys.D))
+			{
+				cmd = new MoveRight(this);
+			}
+
+			if (cmd != null)
+			{
+				cmd.Execute();
+			}
+		}
     }
 }

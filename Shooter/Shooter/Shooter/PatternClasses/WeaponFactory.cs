@@ -1,4 +1,5 @@
-﻿using Shooter.Enums;
+﻿using Shooter.Classes;
+using Shooter.Enums;
 using Shooter.Interfaces;
 
 namespace Shooter.PatternClasses
@@ -18,7 +19,7 @@ namespace Shooter.PatternClasses
 			}
 		}
 
-		public virtual IWeapon CreateWeapon(WeaponName weapon)
+		public virtual Weapon CreateWeapon(WeaponName weapon)
 		{
 			return null;
 		}

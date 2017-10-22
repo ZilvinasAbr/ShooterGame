@@ -1,10 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
-using Shooter.Interfaces;
+using System;
+using Shooter.Enums;
+using Shooter.PatternClasses;
+using Shooter.Utils;
 
 namespace Shooter
 {
@@ -13,19 +15,19 @@ namespace Shooter
     /// </summary>
     public class Game1 : Game
     {
-        const int TileSize = 32;
         readonly GraphicsDeviceManager _graphics;
+		private Dictionary<string, Texture2D> _weaponTextures;
         private SpriteBatch _spriteBatch;
         private Texture2D _backgroundTexture;
         private Texture2D _playerTexture;
         private Texture2D _enemyATexture;
-        private Texture2D _enemyBTexture;
+		private Texture2D _enemyBTexture;
         private Texture2D _wallTexture;
         private KeyboardState _previousState;
         private IList<Enemy> _enemies;
         private IList<Wall> _walls;
-
-        private Map _map;
+		private IList<Weapon> _weapons;
+		private Map _map;
         private Player1 _player;
 
         public Game1()
@@ -59,28 +61,40 @@ namespace Shooter
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+			// Create a new SpriteBatch, which can be used to draw textures.
+			_weaponTextures = new Dictionary<string, Texture2D>();
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             _backgroundTexture = Content.Load<Texture2D>("background");
             _playerTexture = Content.Load<Texture2D>("player");
             _enemyATexture = Content.Load<Texture2D>("enemyA");
             _enemyBTexture = Content.Load<Texture2D>("enemyB");
-            _wallTexture = Content.Load<Texture2D>("wall");
+
+			foreach (var weapon in Enum.GetValues(typeof(WeaponName)))
+			{
+				_weaponTextures.Add(weapon.ToString(), Content.Load<Texture2D>(weapon.ToString()));
+			}
+
+			_wallTexture = Content.Load<Texture2D>("wall");
 
             _player = new Player1(Vector2.Zero, _playerTexture);
-            _map = new Map(16, 16) {BackgroundTexture = _backgroundTexture};
+            _map = new Map(GameSettings.MapSize, GameSettings.MapSize) {BackgroundTexture = _backgroundTexture};
             _map.MapObjects.Add(_player);
             _enemies = new List<Enemy>
             {
-                new EnemyA(new Bazooka(), _player, 100, new Vector2(5*TileSize, 5*TileSize)){Texture = _enemyATexture},
-                new EnemyB(new Pistol(), _player, 100, new Vector2(6*TileSize, 5*TileSize)){Texture = _enemyBTexture}
+                new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyATexture},
+                new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyBTexture}
             };
             _walls = new List<Wall>
             {
-                new Wall{Position = new Vector2(10*TileSize, 10*TileSize), Texture = _wallTexture},
-                new Wall{Position = new Vector2(11*TileSize, 10*TileSize), Texture = _wallTexture}
+                new Wall{Position = new Vector2(10*GameSettings.TilesSize, 10*GameSettings.TilesSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(11*GameSettings.TilesSize, 10*GameSettings.TilesSize), Texture = _wallTexture}
             };
+			_weapons = new List<Weapon>
+			{
+				//new Bazooka {Position = new Vector2(7*GameSettings.TilesSize, 7*GameSettings.TilesSize), Texture = _bazookaTexture}
+			};
+
             foreach (var enemy in _enemies)
             {
                 _map.MapObjects.Add(enemy);
@@ -89,6 +103,10 @@ namespace Shooter
             {
                 _map.MapObjects.Add(wall);
             }
+			foreach (var weapon in _weapons)
+			{
+				_map.MapObjects.Add(weapon);
+			}
         }
 
         /// <summary>
@@ -110,11 +128,40 @@ namespace Shooter
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+			// TODO: Add your update logic here
+			UpdateWeapon(gameTime);
             UpdatePlayer(gameTime);
 
             base.Update(gameTime);
         }
+
+		protected void UpdateWeapon(GameTime gameTime)
+		{
+			var val = StaticRandom.Instance.Next(0, 50);
+
+			if (val == 0)
+			{
+				Weapon weapon = null;
+
+				var factory = WeaponFactory.CreateFactory((WeaponType)StaticRandom.Instance.Next(0, 2));
+			
+				switch (factory)
+				{
+					case HeavyWeaponFactory h:
+						var num = StaticRandom.Instance.Next(0, 2);
+						weapon = factory.CreateWeapon((WeaponName)num);
+						break;
+					case LightWeaponFactory l:
+						var num2 = StaticRandom.Instance.Next(2, 4);
+						weapon = factory.CreateWeapon((WeaponName)num2);
+						break;
+				}
+
+				_weapons.Add(weapon);
+				weapon.Texture = _weaponTextures[weapon.TextureName];
+				_map.MapObjects.Add(weapon);
+			}
+		}
 
         protected void UpdatePlayer(GameTime gameTime)
         {
@@ -124,27 +171,7 @@ namespace Shooter
 
             var keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.W) && !_previousState.IsKeyDown(Keys.W))
-            {
-                _player.Position = new Vector2(position.X, position.Y - TileSize);
-            }
-
-            if (keyboardState.IsKeyDown(Keys.S) && !_previousState.IsKeyDown(Keys.S))
-            {
-                _player.Position = new Vector2(position.X, position.Y + TileSize);
-
-            }
-
-            if (keyboardState.IsKeyDown(Keys.A) && !_previousState.IsKeyDown(Keys.A))
-            {
-                _player.Position = new Vector2(position.X - TileSize, position.Y);
-
-            }
-
-            if (keyboardState.IsKeyDown(Keys.D) && !_previousState.IsKeyDown(Keys.D))
-            {
-                _player.Position = new Vector2(position.X + TileSize, position.Y);
-            }
+			_player.Move(keyboardState, _previousState);
 
             _previousState = keyboardState;
         }
