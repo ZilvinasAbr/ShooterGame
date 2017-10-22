@@ -2,18 +2,19 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shooter.FactoryClasses;
 
 namespace Shooter.Classes
 {
-    public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject
+    public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, EnemyPrototype
     {
         public Vector2 Position { get; set; }
         public int LifePoints { get; set; }
-        public abstract void Draw(SpriteBatch spriteBatch);
-
+        
         private readonly IPlayer _player;
         protected IWeapon Weapon;
-        private int _playerLifePoints;
+
+        public abstract void Draw(SpriteBatch spriteBatch);
 
         protected Enemy(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position)
         {
@@ -37,8 +38,7 @@ namespace Shooter.Classes
 
 		public virtual void Update()
         {
-            _playerLifePoints = _player.LifePoints;
-            Console.WriteLine($"Enemy notified of life points {_playerLifePoints}");
+            Console.WriteLine($"Enemy notified of life points {_player.LifePoints}");
         }
 
         public Enemy Clone()

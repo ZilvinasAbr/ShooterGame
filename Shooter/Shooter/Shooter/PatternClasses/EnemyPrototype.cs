@@ -2,23 +2,10 @@
 
 namespace Shooter.FactoryClasses
 {
-    public class EnemyPrototype
+    public interface EnemyPrototype
     {
-        private Enemy Prototype;
+        Enemy Clone();
 
-        public EnemyPrototype(Enemy prototype)
-        {
-            Prototype = prototype;
-        }
-
-        public Enemy Clone()
-        {
-            return Prototype.Clone();
-        }
-
-        public Enemy DeepCopy()
-        {
-            return Prototype.DeepCopy();
-        }
+        Enemy DeepCopy();
     }
 }

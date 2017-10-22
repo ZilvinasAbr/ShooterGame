@@ -67,15 +67,15 @@ namespace Shooter
             var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
 
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
-            var enemyAPrototypeFactory = new EnemyPrototype(enemyA);
-            var enemyA1 = enemyAPrototypeFactory.Clone();
+            //var enemyAPrototypeFactory = new EnemyPrototype(enemyA);
+            var enemyA1 = enemyA.Clone();
             Console.WriteLine("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
-            var enemyA2 = enemyAPrototypeFactory.Clone();
+            var enemyA2 = enemyA.Clone();
             Console.WriteLine("Second Cloned enemy has " + enemyA2.LifePoints + " life points and his hash code is " + enemyA2.GetHashCode() + " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
 
-            var enemyA3 = enemyAPrototypeFactory.DeepCopy();
+            var enemyA3 = enemyA.DeepCopy();
             Console.WriteLine("Deep Cloned enemy has " + enemyA3.LifePoints + " life points and his hash code is " + enemyA3.GetHashCode() + " and weapon's hash code is " + enemyA3.GetWeapon().GetHashCode());
-            var enemyA4 = enemyAPrototypeFactory.DeepCopy();
+            var enemyA4 = enemyA.DeepCopy();
             Console.WriteLine("Second Deep Cloned enemy has " + enemyA4.LifePoints + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
         }
 
