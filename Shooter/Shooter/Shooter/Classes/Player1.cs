@@ -7,6 +7,7 @@ namespace Shooter.Classes
 {
     class Player1 : IPlayer, IPlayerSubject, IMapObject
     {
+        private readonly IList<IEnemyObserver> _enemyObservers;
         public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
 
@@ -19,8 +20,6 @@ namespace Shooter.Classes
         {
             
         }
-
-        private readonly IList<IEnemyObserver> _enemyObservers;
 
         public int LifePoints { get; set; }
 
