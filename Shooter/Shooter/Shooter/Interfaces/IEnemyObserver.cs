@@ -2,6 +2,6 @@
 {
     public interface IEnemyObserver
     {
-        void Update();
+        void UpdateObserver();
     }
 }

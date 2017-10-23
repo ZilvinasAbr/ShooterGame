@@ -50,7 +50,7 @@ namespace Shooter.Classes
         {
             foreach (var enemyObserver in _enemyObservers)
             {
-                enemyObserver.Update();
+                enemyObserver.UpdateObserver();
             }
         }
 

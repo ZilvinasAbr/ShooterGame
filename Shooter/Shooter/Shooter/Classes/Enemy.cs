@@ -35,8 +35,8 @@ namespace Shooter.Classes
         }
 
         public abstract void Attack();
-
-		public virtual void Update()
+        
+		public virtual void UpdateObserver()
         {
             Console.WriteLine($"Enemy notified of life points {_player.LifePoints}");
         }
