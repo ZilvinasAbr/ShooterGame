@@ -115,12 +115,13 @@ namespace Shooter
             _walls = new List<Wall>
             {
                 new Wall{Position = new Vector2(10*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
-                new Wall{Position = new Vector2(11*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture}
+                new Wall{Position = new Vector2(11*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(12*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(13*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(14*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(15*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture}
             };
-			_weapons = new List<Weapon>
-			{
-				//new Bazooka {Position = new Vector2(7*GameSettings.TileSize, 7*GameSettings.TileSize), Texture = _bazookaTexture}
-			};
+			_weapons = new List<Weapon>();
 
             foreach (var enemy in _enemies)
             {
