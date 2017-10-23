@@ -80,8 +80,10 @@ namespace Shooter
             _player = new Player1(Vector2.Zero, _playerTexture);
             _map = new Map(GameSettings.MapSize, GameSettings.MapSize) {BackgroundTexture = _backgroundTexture};
             _map.MapObjects.Add(_player);
+            var enemiesFactory = new EnemiesConcreteFactory();
             _enemies = new List<Enemy>
             {
+
                 new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyATexture},
                 new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyBTexture}
             };

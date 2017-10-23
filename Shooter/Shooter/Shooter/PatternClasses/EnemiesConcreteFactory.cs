@@ -3,7 +3,7 @@ using Shooter.Classes;
 using Shooter.Enums;
 using Shooter.Interfaces;
 
-namespace Shooter.FactoryClasses
+namespace Shooter.PatternClasses
 {
     public class EnemiesConcreteFactory : EnemiesFactory
     {

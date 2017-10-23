@@ -7,7 +7,6 @@ using Shooter.Classes;
 using Shooter.Enums;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
-using Shooter.FactoryClasses;
 
 namespace Shooter
 {
@@ -69,7 +68,7 @@ namespace Shooter
             var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
 
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
-            //var enemyAPrototypeFactory = new EnemyPrototype(enemyA);
+
             var enemyA1 = enemyA.Clone();
             Console.WriteLine("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
             var enemyA2 = enemyA.Clone();
