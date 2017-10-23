@@ -4,7 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
 using System;
+using System.Linq;
 using Shooter.Enums;
+using Shooter.Interfaces;
 using Shooter.PatternClasses;
 using Shooter.Utils;
 
@@ -29,13 +31,14 @@ namespace Shooter
 		private IList<Weapon> _weapons;
 		private Map _map;
         private Player1 _player;
+        private IPathFinding _pathFinder;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = 512,
-                PreferredBackBufferHeight = 512
+                PreferredBackBufferWidth = GameSettings.TileSize * GameSettings.MapSize,
+                PreferredBackBufferHeight = GameSettings.TileSize * GameSettings.MapSize
             };
             _graphics.ApplyChanges();
             Content.RootDirectory = "Content";
@@ -80,14 +83,15 @@ namespace Shooter
             _player = new Player1(Vector2.Zero, _playerTexture);
             _map = new Map(GameSettings.MapSize, GameSettings.MapSize) {BackgroundTexture = _backgroundTexture};
             _map.MapObjects.Add(_player);
+            _pathFinder = new PathFindingAdapter(_map);
 
             var enemiesFactory = new EnemiesConcreteFactory();
             _enemies = new List<Enemy>
             {
-                enemiesFactory.CreateEnemy(EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyATexture),
-                enemiesFactory.CreateEnemy(EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyBTexture)
-                //new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyATexture},
-                //new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyBTexture)
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyATexture),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture)
+                //new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize)){Texture = _enemyATexture},
+                //new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture)
             };
 
             var clonedEnemies = new List<Enemy>
@@ -98,10 +102,10 @@ namespace Shooter
                 _enemies[1].DeepCopy()
             };
 
-            clonedEnemies[0].Position = new Vector2(7 * GameSettings.TilesSize, 5 * GameSettings.TilesSize);
-            clonedEnemies[1].Position = new Vector2(5 * GameSettings.TilesSize, 9 * GameSettings.TilesSize);
-            clonedEnemies[2].Position = new Vector2(2 * GameSettings.TilesSize, 4 * GameSettings.TilesSize);
-            clonedEnemies[3].Position = new Vector2(5 * GameSettings.TilesSize, 1 * GameSettings.TilesSize);
+            clonedEnemies[0].Position = new Vector2(7 * GameSettings.TileSize, 5 * GameSettings.TileSize);
+            clonedEnemies[1].Position = new Vector2(5 * GameSettings.TileSize, 9 * GameSettings.TileSize);
+            clonedEnemies[2].Position = new Vector2(2 * GameSettings.TileSize, 4 * GameSettings.TileSize);
+            clonedEnemies[3].Position = new Vector2(5 * GameSettings.TileSize, 1 * GameSettings.TileSize);
 
             _enemies.Add(clonedEnemies[0]);
             _enemies.Add(clonedEnemies[1]);
@@ -110,12 +114,12 @@ namespace Shooter
 
             _walls = new List<Wall>
             {
-                new Wall{Position = new Vector2(10*GameSettings.TilesSize, 10*GameSettings.TilesSize), Texture = _wallTexture},
-                new Wall{Position = new Vector2(11*GameSettings.TilesSize, 10*GameSettings.TilesSize), Texture = _wallTexture}
+                new Wall{Position = new Vector2(10*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture},
+                new Wall{Position = new Vector2(11*GameSettings.TileSize, 10*GameSettings.TileSize), Texture = _wallTexture}
             };
 			_weapons = new List<Weapon>
 			{
-				//new Bazooka {Position = new Vector2(7*GameSettings.TilesSize, 7*GameSettings.TilesSize), Texture = _bazookaTexture}
+				//new Bazooka {Position = new Vector2(7*GameSettings.TileSize, 7*GameSettings.TileSize), Texture = _bazookaTexture}
 			};
 
             foreach (var enemy in _enemies)
@@ -160,7 +164,7 @@ namespace Shooter
 
 		protected void UpdateWeapon(GameTime gameTime)
 		{
-			var val = StaticRandom.Instance.Next(0, 50);
+			var val = StaticRandom.Instance.Next(0, 1000);
 
 			if (val == 0)
 			{

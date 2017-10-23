@@ -20,7 +20,7 @@ namespace Shooter.Classes
         {
             var randomPosition = new Random();
             TextureName = texture;
-            Position = new Vector2(randomPosition.Next(0, 32) * GameSettings.TilesSize, randomPosition.Next(0, 32) * GameSettings.TilesSize);
+            Position = new Vector2(randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize, randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize);
         }
 
         public abstract void Shoot();

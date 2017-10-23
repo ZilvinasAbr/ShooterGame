@@ -21,14 +21,16 @@ namespace Shooter
             Console.WriteLine("Running Observer Example");
 
             var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
 
             var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
             var enemies = new List<IEnemyObserver>
             {
-                new EnemyA(pistol, player1, 50, mockPosition, null),
-                new EnemyA(pistol, player1, 50, mockPosition, null),
-                new EnemyA(pistol, player1, 50, mockPosition, null)
+                new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null),
+                new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null),
+                new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null)
             };
 
             foreach (var enemy in enemies)
@@ -48,12 +50,14 @@ namespace Shooter
         {
             Console.WriteLine("Running Factory Example");
             var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
             var enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition, null);
+            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
-            var enemyB = enemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            var enemyB = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
             Console.WriteLine("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
         }
 
@@ -61,11 +65,13 @@ namespace Shooter
         {
             Console.WriteLine("Running Prototype Example");
             var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
 
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition, null);
+            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
 
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
 
@@ -85,12 +91,15 @@ namespace Shooter
             Console.WriteLine("Running Bridge Example");
 
             var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
+
             IPlayer player = new Player1();
             IWeapon bazooka = new Bazooka();
             IWeapon pistol = new Pistol();
 
-            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50, mockPosition, null);
-            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50, mockPosition, null);
+            Enemy enemyAWithBazooka = new EnemyA(mockPathFinder, bazooka, player, 50, mockPosition, null);
+            Enemy enemyBWithPistol = new EnemyB(mockPathFinder, pistol, player, 50, mockPosition, null);
 
             enemyAWithBazooka.Attack();
             enemyBWithPistol.Attack();
@@ -115,10 +124,10 @@ namespace Shooter
         private static void AdapterExample()
         {
             int mapSize = 32;
-            var map = new Map(mapSize, mapSize);
-            IPathFinding pathfindingAdapter = new PathFindingAdapter(mapSize, mapSize);
+            var mockMap = new Map(mapSize, mapSize);
+            IPathFinding pathfindingAdapter = new PathFindingAdapter(mockMap);
 
-            var nextPoint = pathfindingAdapter.NextPoint(map.MapObjects, new Point(0, 0), new Point(0, 5));
+            var nextPoint = pathfindingAdapter.NextPoint(new Point(0, 0), new Point(0, 5));
 
             Console.WriteLine($"Next point: {nextPoint}");
         }

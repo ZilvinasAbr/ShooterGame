@@ -1,6 +1,6 @@
 ﻿namespace Shooter.Interfaces
 {
-    interface IPlayerSubject
+    public interface IPlayerSubject
     {
         void AttachObserver(IEnemyObserver enemy);
         void DetachObserver(IEnemyObserver enemy);

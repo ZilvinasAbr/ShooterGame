@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Shooter.Classes;
-using Shooter.Enums;
+﻿using Microsoft.Xna.Framework;
 
 namespace Shooter.Interfaces
 {
     public interface IPathFinding
     {
-        Point NextPoint(IEnumerable<IMapObject> mapObjects, Point start, Point end);
+        Point NextPoint(Point start, Point end);
     }
 }

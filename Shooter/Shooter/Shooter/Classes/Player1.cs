@@ -7,7 +7,7 @@ using Shooter.PatternClasses;
 
 namespace Shooter.Classes
 {
-    public class Player1 : IPlayer, IPlayerSubject, IMapObject
+    public class Player1 : IPlayer
     {
         private readonly IList<IEnemyObserver> _enemyObservers;
         public Texture2D Texture { get; set; }
@@ -79,6 +79,7 @@ namespace Shooter.Classes
 			if (cmd != null)
 			{
 				cmd.Execute();
+                Notify();
 			}
 		}
     }

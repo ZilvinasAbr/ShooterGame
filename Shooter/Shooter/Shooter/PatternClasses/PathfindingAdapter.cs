@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using DeenGames.Utils.AStarPathFinder;
+﻿using DeenGames.Utils.AStarPathFinder;
 using Microsoft.Xna.Framework;
 using Shooter.Classes;
 using Shooter.Interfaces;
@@ -8,44 +7,58 @@ namespace Shooter.PatternClasses
 {
     class PathFindingAdapter : IPathFinding
     {
+        private readonly Map _map;
         private readonly PathFinderFast _adaptee;
         private readonly byte[,] _grid;
-        private readonly int _width;
-        private readonly int _height;
-
-        public PathFindingAdapter(int width, int height)
+        
+        public PathFindingAdapter(Map map)
         {
-            _width = width;
-            _height = height;
-            _grid = new byte[width,height];
+            _map = map;
+            _grid = new byte[_map.Width,_map.Height];
             _adaptee = new PathFinderFast(_grid);
         }
 
-        public Point NextPoint(IEnumerable<IMapObject> mapObjects, Point start, Point end)
+        public Point NextPoint(Point start, Point end)
         {
-            for (var i = 0; i < _width; i++)
+            if (start == end)
             {
-                for (var j = 0; j < _height; j++)
+                return start;
+            }
+
+            var width = _map.Width;
+            var height = _map.Height;
+
+            for (var i = 0; i < width; i++)
+            {
+                for (var j = 0; j < height; j++)
                 {
                     _grid[i, j] = PathFinderHelper.EMPTY_TILE;
                 }
             }
 
-            foreach (var mapObject in mapObjects)
+            foreach (var mapObject in _map.MapObjects)
             {
-                _grid[(int) mapObject.Position.X, (int) mapObject.Position.Y] = PathFinderHelper.BLOCKED_TILE;
+                if (mapObject is Enemy || mapObject is Wall)
+                {
+                    var mapObjectX = (int)mapObject.Position.X / GameSettings.TileSize;
+                    var mapObjectY = (int)mapObject.Position.Y / GameSettings.TileSize;
+                    _grid[mapObjectX, mapObjectY] = PathFinderHelper.BLOCKED_TILE;
+                }
             }
 
-            var path = _adaptee.FindPath(new DeenGames.Utils.Point(start.X, start.Y), new DeenGames.Utils.Point(end.X, end.Y));
+            var normalizedStart = new DeenGames.Utils.Point(start.X / GameSettings.TileSize, start.Y / GameSettings.TileSize);
+            var normalizedEnd = new DeenGames.Utils.Point(end.X / GameSettings.TileSize, end.Y / GameSettings.TileSize);
 
-            if (path == null)
+            var path = _adaptee.FindPath(normalizedStart, normalizedEnd);
+
+            if (path == null || path.Count <= 1)
             {
-                return Point.Zero;
+                return start;
             }
 
             var index = path.Count - 2;
 
-            return new Point(path[index].X, path[index].Y);
+            return new Point(path[index].X * GameSettings.TileSize, path[index].Y * GameSettings.TileSize);
         }
     }
 }

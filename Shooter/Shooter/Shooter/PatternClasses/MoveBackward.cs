@@ -16,7 +16,7 @@ namespace Shooter.PatternClasses
 		public void Execute()
 		{
 			var position = _player.Position;
-			_player.Position = new Vector2(position.X, position.Y + GameSettings.TilesSize);
+			_player.Position = new Vector2(position.X, position.Y + GameSettings.TileSize);
 		}
 	}
 }
