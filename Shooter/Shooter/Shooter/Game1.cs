@@ -80,13 +80,34 @@ namespace Shooter
             _player = new Player1(Vector2.Zero, _playerTexture);
             _map = new Map(GameSettings.MapSize, GameSettings.MapSize) {BackgroundTexture = _backgroundTexture};
             _map.MapObjects.Add(_player);
+
             var enemiesFactory = new EnemiesConcreteFactory();
             _enemies = new List<Enemy>
             {
-
-                new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyATexture},
-                new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyBTexture}
+                enemiesFactory.CreateEnemy(EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyATexture),
+                enemiesFactory.CreateEnemy(EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyBTexture)
+                //new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TilesSize, 5*GameSettings.TilesSize)){Texture = _enemyATexture},
+                //new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TilesSize, 5*GameSettings.TilesSize), _enemyBTexture)
             };
+
+            var clonedEnemies = new List<Enemy>
+            {
+                _enemies[0].DeepCopy(),
+                _enemies[0].DeepCopy(),
+                _enemies[1].DeepCopy(),
+                _enemies[1].DeepCopy()
+            };
+
+            clonedEnemies[0].Position = new Vector2(7 * GameSettings.TilesSize, 5 * GameSettings.TilesSize);
+            clonedEnemies[1].Position = new Vector2(5 * GameSettings.TilesSize, 9 * GameSettings.TilesSize);
+            clonedEnemies[2].Position = new Vector2(2 * GameSettings.TilesSize, 4 * GameSettings.TilesSize);
+            clonedEnemies[3].Position = new Vector2(5 * GameSettings.TilesSize, 1 * GameSettings.TilesSize);
+
+            _enemies.Add(clonedEnemies[0]);
+            _enemies.Add(clonedEnemies[1]);
+            _enemies.Add(clonedEnemies[2]);
+            _enemies.Add(clonedEnemies[3]);
+
             _walls = new List<Wall>
             {
                 new Wall{Position = new Vector2(10*GameSettings.TilesSize, 10*GameSettings.TilesSize), Texture = _wallTexture},

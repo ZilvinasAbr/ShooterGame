@@ -10,18 +10,20 @@ namespace Shooter.Classes
     {
         public Vector2 Position { get; set; }
         public int LifePoints { get; set; }
-        
+        public Texture2D Texture { get; set; }
+
         private readonly IPlayer _player;
         protected IWeapon Weapon;
 
         public abstract void Draw(SpriteBatch spriteBatch);
 
-        protected Enemy(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position)
+        protected Enemy(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture)
         {
             Weapon = weapon;
             _player = player;
             LifePoints = lifePoints;
             Position = position;
+            Texture = texture;
         }
 
         public IWeapon GetWeapon()
@@ -36,7 +38,7 @@ namespace Shooter.Classes
 
         public abstract void Attack();
         
-		public virtual void UpdateObserver()
+        public virtual void UpdateObserver()
         {
             Console.WriteLine($"Enemy notified of life points {_player.LifePoints}");
         }

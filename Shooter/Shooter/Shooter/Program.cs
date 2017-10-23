@@ -26,9 +26,9 @@ namespace Shooter
             var pistol = new Pistol();
             var enemies = new List<IEnemyObserver>
             {
-                new EnemyA(pistol, player1, 50, mockPosition),
-                new EnemyA(pistol, player1, 50, mockPosition),
-                new EnemyA(pistol, player1, 50, mockPosition)
+                new EnemyA(pistol, player1, 50, mockPosition, null),
+                new EnemyA(pistol, player1, 50, mockPosition, null),
+                new EnemyA(pistol, player1, 50, mockPosition, null)
             };
 
             foreach (var enemy in enemies)
@@ -51,9 +51,9 @@ namespace Shooter
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
             var enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
+            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition, null);
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
-            var enemyB = enemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition);
+            var enemyB = enemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition, null);
             Console.WriteLine("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
         }
 
@@ -65,7 +65,7 @@ namespace Shooter
             var pistol = new Pistol();
 
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
+            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition, null);
 
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
 
@@ -89,8 +89,8 @@ namespace Shooter
             IWeapon bazooka = new Bazooka();
             IWeapon pistol = new Pistol();
 
-            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50, mockPosition);
-            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50, mockPosition);
+            Enemy enemyAWithBazooka = new EnemyA(bazooka, player, 50, mockPosition, null);
+            Enemy enemyBWithPistol = new EnemyB(pistol, player, 50, mockPosition, null);
 
             enemyAWithBazooka.Attack();
             enemyBWithPistol.Attack();

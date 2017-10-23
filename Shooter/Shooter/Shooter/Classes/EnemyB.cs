@@ -6,9 +6,7 @@ namespace Shooter.Classes
 {
     public class EnemyB : Enemy
     {
-        public Texture2D Texture { get; set; }
-
-        public EnemyB(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position) : base(weapon, player, lifePoints, position)
+        public EnemyB(IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture) : base(weapon, player, lifePoints, position, texture)
         {
         }
 
