@@ -11,7 +11,7 @@ namespace Shooter.Classes
 
 		public override void Shoot()
 		{
-		    Console.WriteLine("Pistol shoots");
+		    Logger.Instance.Info("Pistol shoots");
 		}
 	}
 }

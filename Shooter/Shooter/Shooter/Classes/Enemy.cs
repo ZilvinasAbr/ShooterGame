@@ -44,7 +44,7 @@ namespace Shooter.Classes
         
         public virtual void UpdateObserver()
         {
-            Console.WriteLine($"Enemy notified of player position {_player.Position}");
+            Logger.Instance.Info($"Enemy notified of player position {_player.Position}");
             var start = new Point((int)Position.X, (int)Position.Y);
             var end = new Point((int) _player.Position.X, (int) _player.Position.Y);
             var nextPoint = PathFinder.NextPoint(start, end);

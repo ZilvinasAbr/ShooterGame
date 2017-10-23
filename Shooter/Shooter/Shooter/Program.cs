@@ -18,7 +18,7 @@ namespace Shooter
     {
         static void ObserverExample()
         {
-            Console.WriteLine("Running Observer Example");
+            Logger.Instance.Info("Running Observer Example");
 
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
@@ -38,9 +38,9 @@ namespace Shooter
                 player1.AttachObserver(enemy);
             }
 
-            Console.WriteLine("Test1:");
+            Logger.Instance.Info("Test1:");
             player1.Notify();
-            Console.WriteLine("Test2:");
+            Logger.Instance.Info("Test2:");
             player1.LifePoints = 90;
             player1.DetachObserver(enemies[0]);
             player1.Notify();
@@ -48,7 +48,7 @@ namespace Shooter
 
         private static void FactoryExample()
         {
-            Console.WriteLine("Running Factory Example");
+            Logger.Instance.Info("Running Factory Example");
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
@@ -56,14 +56,14 @@ namespace Shooter
             var pistol = new Pistol();
             var enemiesFactory = new EnemiesConcreteFactory();
             var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
-            Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
+            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
             var enemyB = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
-            Console.WriteLine("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
+            Logger.Instance.Info("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
         }
 
         private static void PrototypeExample()
         {
-            Console.WriteLine("Running Prototype Example");
+            Logger.Instance.Info("Running Prototype Example");
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
@@ -73,22 +73,22 @@ namespace Shooter
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
             var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
 
-            Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
+            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
 
             var enemyA1 = enemyA.Clone();
-            Console.WriteLine("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
             var enemyA2 = enemyA.Clone();
-            Console.WriteLine("Second Cloned enemy has " + enemyA2.LifePoints + " life points and his hash code is " + enemyA2.GetHashCode() + " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Second Cloned enemy has " + enemyA2.LifePoints + " life points and his hash code is " + enemyA2.GetHashCode() + " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
 
             var enemyA3 = enemyA.DeepCopy();
-            Console.WriteLine("Deep Cloned enemy has " + enemyA3.LifePoints + " life points and his hash code is " + enemyA3.GetHashCode() + " and weapon's hash code is " + enemyA3.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Deep Cloned enemy has " + enemyA3.LifePoints + " life points and his hash code is " + enemyA3.GetHashCode() + " and weapon's hash code is " + enemyA3.GetWeapon().GetHashCode());
             var enemyA4 = enemyA.DeepCopy();
-            Console.WriteLine("Second Deep Cloned enemy has " + enemyA4.LifePoints + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Second Deep Cloned enemy has " + enemyA4.LifePoints + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
         }
 
         private static void BridgeExample()
         {
-            Console.WriteLine("Running Bridge Example");
+            Logger.Instance.Info("Running Bridge Example");
 
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
@@ -129,7 +129,7 @@ namespace Shooter
 
             var nextPoint = pathfindingAdapter.NextPoint(new Point(0, 0), new Point(0, 5));
 
-            Console.WriteLine($"Next point: {nextPoint}");
+            Logger.Instance.Info($"Next point: {nextPoint}");
         }
 
         /// <summary>
