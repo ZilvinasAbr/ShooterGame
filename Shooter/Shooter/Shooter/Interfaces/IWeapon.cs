@@ -2,9 +2,9 @@
 
 namespace Shooter.Interfaces
 {
-	public interface IWeapon
-	{
-		void Shoot();
+    public interface IWeapon
+    {
+        void Shoot();
         Weapon Clone();
-	}
+    }
 }

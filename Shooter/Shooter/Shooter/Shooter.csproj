@@ -49,6 +49,7 @@
     <Compile Include="Classes\EnemyB.cs" />
     <Compile Include="Classes\IMapObject.cs" />
     <Compile Include="Classes\Logger.cs" />
+    <Compile Include="PatternClasses\EnemiesFactory.cs" />
     <Compile Include="PatternClasses\MoveBackward.cs" />
     <Compile Include="PatternClasses\MoveForward.cs" />
     <Compile Include="PatternClasses\MoveLeft.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Utils\GameSettings.cs" />
-    <Compile Include="PatternClasses\EnemiesFactory.cs" />
+    <Compile Include="PatternClasses\EnemiesConcreteFactory.cs" />
     <Compile Include="PatternClasses\EnemyPrototype.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
     <Compile Include="Interfaces\IBossBuilder.cs" />

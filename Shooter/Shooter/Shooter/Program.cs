@@ -51,9 +51,10 @@ namespace Shooter
             var mockPosition = Vector2.Zero;
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
-            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
+            var enemiesFactory = new EnemiesConcreteFactory();
+            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
-            var enemyB = EnemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition);
+            var enemyB = enemiesFactory.CreateEnemy(EnemyType.Big, pistol, player1, 75, mockPosition);
             Console.WriteLine("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
         }
 
@@ -64,7 +65,8 @@ namespace Shooter
             var player1 = new Player1 { LifePoints = 100 };
             var pistol = new Pistol();
 
-            var enemyA = EnemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
+            EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
+            var enemyA = enemiesFactory.CreateEnemy(EnemyType.Small, pistol, player1, 50, mockPosition);
 
             Console.WriteLine("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
             //var enemyAPrototypeFactory = new EnemyPrototype(enemyA);

@@ -5,19 +5,8 @@ using Shooter.Interfaces;
 
 namespace Shooter.FactoryClasses
 {
-    public class EnemiesFactory
+    public abstract class EnemiesFactory
     {
-        public static Enemy CreateEnemy(EnemyType type, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position)
-        {
-            switch(type)
-            {
-                case EnemyType.Small:
-                    return new EnemyA(weapon, player, lifePoints, position);
-                case EnemyType.Big:
-                    return new EnemyB(weapon, player, lifePoints, position);
-                default:
-                    return null;
-            }
-        }
+        public abstract Enemy CreateEnemy(EnemyType type, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position);
     }
 }
