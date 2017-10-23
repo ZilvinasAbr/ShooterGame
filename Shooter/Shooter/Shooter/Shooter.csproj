@@ -49,10 +49,10 @@
     <Compile Include="Classes\EnemyB.cs" />
     <Compile Include="Classes\IMapObject.cs" />
     <Compile Include="Classes\Logger.cs" />
-    <Compile Include="Classes\MoveBackward.cs" />
-    <Compile Include="Classes\MoveForward.cs" />
-    <Compile Include="Classes\MoveLeft.cs" />
-    <Compile Include="Classes\MoveRight.cs" />
+    <Compile Include="PatternClasses\MoveBackward.cs" />
+    <Compile Include="PatternClasses\MoveForward.cs" />
+    <Compile Include="PatternClasses\MoveLeft.cs" />
+    <Compile Include="PatternClasses\MoveRight.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
     <Compile Include="Classes\Wall.cs" />

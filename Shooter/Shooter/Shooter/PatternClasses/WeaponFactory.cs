@@ -1,6 +1,5 @@
 ﻿using Shooter.Classes;
 using Shooter.Enums;
-using Shooter.Interfaces;
 
 namespace Shooter.PatternClasses
 {

@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Shooter.Classes;
 using Shooter.Interfaces;
 
-namespace Shooter.Classes
+namespace Shooter.PatternClasses
 {
 	public class MoveRight : ICommand
 	{
