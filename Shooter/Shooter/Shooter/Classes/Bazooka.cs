@@ -2,9 +2,9 @@
 
 namespace Shooter.Classes
 {
-	public class Bazooka : Weapon
+	public class Bazooka : HeavyWeapon
 	{
-		public Bazooka() : base("Bazooka")
+		public Bazooka()
 		{
 
 		}

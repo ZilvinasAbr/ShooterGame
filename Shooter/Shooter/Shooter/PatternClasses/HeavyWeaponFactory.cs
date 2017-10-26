@@ -10,9 +10,15 @@ namespace Shooter.PatternClasses
 			switch (heavyWeapon)
 			{
 				case WeaponName.Bazooka:
-					return new Bazooka();
+					return new Bazooka
+					{
+						Name = "Bazooka"
+					};
 				case WeaponName.Shotgun:
-					return new Shotgun();
+					return new Shotgun
+					{
+						Name = "Shotgun"
+					};
 				default:
 					return null;
 			}

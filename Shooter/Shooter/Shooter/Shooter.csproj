@@ -47,7 +47,9 @@
     <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\EnemyA.cs" />
     <Compile Include="Classes\EnemyB.cs" />
+    <Compile Include="Classes\HeavyWeapon.cs" />
     <Compile Include="Classes\IMapObject.cs" />
+    <Compile Include="Classes\LightWeapon.cs" />
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="PatternClasses\EnemiesFactory.cs" />
     <Compile Include="PatternClasses\MoveBackward.cs" />

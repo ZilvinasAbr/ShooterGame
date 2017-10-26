@@ -2,9 +2,9 @@
 
 namespace Shooter.Classes
 {
-	public class Pistol : Weapon
+	public class Pistol : LightWeapon
 	{
-		public Pistol() : base("Pistol")
+		public Pistol()
 		{
 
 		}

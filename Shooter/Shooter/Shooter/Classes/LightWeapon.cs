@@ -2,12 +2,13 @@
 
 namespace Shooter.Classes
 {
-	public class SMG : LightWeapon
+	public class LightWeapon : Weapon
 	{
-		public SMG()
+		public LightWeapon()
 		{
-			
+			SlowsSpeed = false;
 		}
+
 		public override void Shoot()
 		{
 			throw new NotImplementedException();

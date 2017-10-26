@@ -186,7 +186,7 @@ namespace Shooter
 				}
 
 				_weapons.Add(weapon);
-				weapon.Texture = _weaponTextures[weapon.TextureName];
+				weapon.Texture = _weaponTextures[weapon.Name];
 				_map.MapObjects.Add(weapon);
 			}
 		}

@@ -1,8 +1,8 @@
 ﻿namespace Shooter.Classes
 {
-	public class Shotgun : Weapon
+	public class Shotgun : HeavyWeapon
 	{
-		public Shotgun() : base("Shotgun")
+		public Shotgun()
 		{
 
 		}

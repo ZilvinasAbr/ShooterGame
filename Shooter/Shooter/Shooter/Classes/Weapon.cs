@@ -15,11 +15,11 @@ namespace Shooter.Classes
         public decimal Price { get; set; }
         public int Range { get; set; }
         public int Magazine { get; set; }
+		public bool SlowsSpeed { get; set; }
 
-        public Weapon(string texture)
+		public Weapon()
         {
             var randomPosition = new Random();
-            TextureName = texture;
             Position = new Vector2(randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize, randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize);
         }
 

@@ -10,9 +10,15 @@ namespace Shooter.PatternClasses
 			switch (lightWeapon)
 			{
 				case WeaponName.Pistol:
-					return new Pistol();
+					return new Pistol
+					{
+						Name = "Pistol"
+					};
 				case WeaponName.SMG:
-					return new SMG();
+					return new SMG
+					{
+						Name = "SMG"
+					};
 				default:
 					return null;
 			}
