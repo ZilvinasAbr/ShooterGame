@@ -90,8 +90,6 @@ namespace Shooter
             {
                 enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyATexture),
                 enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture)
-                //new EnemyA(new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize)){Texture = _enemyATexture},
-                //new EnemyB(new Pistol(), _player, 100, new Vector2(6*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture)
             };
 
             var clonedEnemies = new List<Enemy>
