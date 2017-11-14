@@ -86,6 +86,51 @@ namespace Shooter
             Logger.Instance.Info("Second Deep Cloned enemy has " + enemyA4.LifePoints + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
         }
 
+        private static void CompositeExample()
+        {
+            Logger.Instance.Info("Running Prototype Example");
+            var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
+            var player1 = new Player1 { LifePoints = 100 };
+            var pistol = new Pistol();
+
+            Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null);
+            Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null);
+
+            EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
+            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
+            var enemyB1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition, null);
+            var enemyB2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
+
+            Boss1.AddMinion(enemyA1);
+            Boss1.AddMinion(Boss2);
+            Boss1.AddMinion(enemyB1);
+
+            Boss2.AddMinion(enemyA2);
+            Boss2.AddMinion(enemyB2);
+
+
+            Logger.Instance.Info("Boss1 has " + Boss1.LifePoints + "HP. His minions:");
+            int i = 1;
+            foreach (Enemy enemy in Boss1.GetMinions())
+            {
+                Logger.Instance.Info("Minion has " + enemy.LifePoints + "HP, his boss is Boss" + i + ".");
+                if(enemy.GetType() == typeof(Boss))
+                {
+                    i++;
+                    Boss temp = (Boss)enemy;
+                    Logger.Instance.Info("This minion is boss as well.");
+                    foreach (Enemy minion in temp.GetMinions())
+                    {
+                        Logger.Instance.Info("Minion has " + minion.LifePoints + "HP, his boss is Boss" + i + ".");
+                    }
+                    i--;
+                }
+            }
+        }
+
         private static void BridgeExample()
         {
             Logger.Instance.Info("Running Bridge Example");
@@ -145,6 +190,7 @@ namespace Shooter
             AdapterExample();
             FactoryExample();
             PrototypeExample();
+            CompositeExample();
 
             using (var game = new Game1())
                 game.Run();

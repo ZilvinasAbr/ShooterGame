@@ -8,6 +8,7 @@ AbstractFactory
 Ernestas:
 Factory
 Prototype
+Composite
 
 Kartu implementinti:
 

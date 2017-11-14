@@ -1,25 +1,46 @@
-﻿using Shooter.Interfaces;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Shooter.Interfaces;
 using Shooter.PatternClasses;
+using System.Collections.Generic;
 
 namespace Shooter.Classes
 {
-	public class Boss : IBoss
+	public class Boss : Enemy, IBoss
 	{
-		public int HP { get; set; }
-		public int Speed { get; set; }
-		public Weapon Weapon { get; set; }
-		
+        private IList<Enemy> minions;
 
-		public Boss(BossBuilder bossBuilder)
+		public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture) : base(pathFinder, weapon, player, lifePoints, position, texture)
 		{
-			HP = bossBuilder.Hp;
-			Speed = bossBuilder.Speed;
-			Weapon = bossBuilder.Weapon;
+            minions = new List<Enemy>();
 		}
 
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(Texture, Position, Color.White);
+        }
+
+        public override void Attack()
+        {
+        }
 
 		public void BossAttack()
 		{
 		}
+
+        public void AddMinion(Enemy enemy)
+        {
+            minions.Add(enemy);
+        }
+
+        public void RemoveMinion(Enemy enemy)
+        {
+            minions.Remove(enemy);
+        }
+
+        public IList<Enemy> GetMinions()
+        {
+            return minions;
+        }
 	}
 }
