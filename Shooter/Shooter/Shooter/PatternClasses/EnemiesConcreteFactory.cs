@@ -16,6 +16,8 @@ namespace Shooter.PatternClasses
                     return new EnemyA(pathFinder, weapon, player, lifePoints, position, texture);
                 case EnemyType.Big:
                     return new EnemyB(pathFinder, weapon, player, lifePoints, position, texture);
+                case EnemyType.Boss:
+                    return new Boss(pathFinder, weapon, player, lifePoints, position, texture);
                 default:
                     return null;
             }

@@ -3,6 +3,7 @@
     public enum EnemyType
     {
         Small,
-        Big
+        Big,
+        Boss
     }
 }

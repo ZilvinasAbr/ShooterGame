@@ -13,7 +13,8 @@ namespace Shooter.Classes
         public Vector2 Position { get; set; }
         public int LifePoints { get; set; }
         public Texture2D Texture { get; set; }
-        public IActionState CurrentState { get; set; }
+	public IActionState CurrentState { get; set; }
+	protected bool Alive;
 
         private readonly IPlayer _player;
         protected IWeapon Weapon;
@@ -38,6 +39,7 @@ namespace Shooter.Classes
             CurrentState = new MovingState();
             _player = player;
             _player.AttachObserver(this);
+            Alive = true;
         }
 
         public IWeapon GetWeapon()
@@ -48,6 +50,25 @@ namespace Shooter.Classes
         public void SetWeapon(IWeapon weapon)
         {
             Weapon = weapon;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            LifePoints = LifePoints - damage;
+            if(LifePoints <= 0)
+            {
+                Alive = false;
+            }
+        }
+
+        public virtual void Die()
+        {
+            Alive = false;
+        }
+
+        public bool IsAlive()
+        {
+            return Alive;
         }
 
         public abstract void Attack();

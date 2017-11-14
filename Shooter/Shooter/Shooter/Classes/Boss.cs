@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
-using Shooter.PatternClasses;
 using System.Collections.Generic;
 
 namespace Shooter.Classes
@@ -36,6 +35,20 @@ namespace Shooter.Classes
         public void RemoveMinion(Enemy enemy)
         {
             minions.Remove(enemy);
+        }
+
+        public override void Die()
+        {
+            Alive = false;
+            foreach(Enemy minion in minions)
+            {
+                minion.Die();
+            }
+        }
+
+        public Enemy GetMinion(int index)
+        {
+            return minions[index];
         }
 
         public IList<Enemy> GetMinions()
