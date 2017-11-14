@@ -1,6 +1,7 @@
 ﻿Žilvinas:
 Observer
 Bridge
+State
 
 Mantas:
 AbstractFactory
@@ -14,13 +15,3 @@ Kartu implementinti:
 
 Singleton
 Adapter
-
-L3 ir L4:
-Žilvinas:
-State
-
-Mantas:
-
-Ernestas:
-
-Kartu implementinti:
