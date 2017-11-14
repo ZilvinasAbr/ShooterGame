@@ -41,10 +41,6 @@ namespace Shooter.Classes
         public override void Die()
         {
             Alive = false;
-            foreach(Enemy minion in minions)
-            {
-                minion.Die();
-            }
         }
 
         public Enemy GetMinion(int index)

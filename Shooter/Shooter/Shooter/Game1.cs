@@ -96,12 +96,10 @@ namespace Shooter
                 enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 250, new Vector2(1 * GameSettings.TileSize, 2 * GameSettings.TileSize), _bossTexture)
             };
 
-            //var boss = enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 500, new Vector2(1 * GameSettings.TileSize, 1 * GameSettings.TileSize), _bossTexture);
             Boss boss = (Boss)_enemies[2];
             boss.AddMinion(_enemies[0]);
             boss.AddMinion(_enemies[1]);
-            //boss.AddMinion(_enemies[3]);
-            _enemies[2] = boss;
+            boss.AddMinion(_enemies[3]);
 
             foreach (Enemy minion in boss.GetMinions())
                 _map.MapObjects.Add(minion);
@@ -126,7 +124,6 @@ namespace Shooter
 
             Boss boss2 = (Boss)_enemies[3];
             boss2.AddMinion(_enemies[4]);
-            _enemies[3] = boss2;
 
             _walls = new List<Wall>
             {
@@ -178,9 +175,8 @@ namespace Shooter
             i++;
             if(i > 200)
             {
-                Boss temp = (Boss)_enemies[2];
-                temp.Die();
-                _enemies[2] = temp;
+                Boss boss = (Boss)_enemies[2];
+                boss.Accept(new EnemyKiller());
             }
             RemoveDeadEnemies();
 
