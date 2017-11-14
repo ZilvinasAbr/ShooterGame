@@ -177,6 +177,22 @@ namespace Shooter
             Logger.Instance.Info($"Next point: {nextPoint}");
         }
 
+        private static void StateExample()
+        {
+            Console.WriteLine("State Example:");
+            var mockPosition = Vector2.Zero;
+            int mapSize = 32;
+            var mockMap = new Map(mapSize, mapSize);
+            IPathFinding pathfindingAdapter = new PathFindingAdapter(mockMap);
+            var weapon = new Shotgun();
+            var mockPlayer = new Player1 {LifePoints = 100};
+            
+            var enemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 50, mockPosition, null);
+            enemy.DoAction();
+            enemy.CurrentState = new ShootingState();
+            enemy.DoAction();
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -191,6 +207,7 @@ namespace Shooter
             FactoryExample();
             PrototypeExample();
             CompositeExample();
+            StateExample();
 
             using (var game = new Game1())
                 game.Run();

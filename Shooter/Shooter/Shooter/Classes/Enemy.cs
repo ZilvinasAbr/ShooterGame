@@ -1,5 +1,6 @@
 ﻿using Shooter.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,12 +13,20 @@ namespace Shooter.Classes
         public Vector2 Position { get; set; }
         public int LifePoints { get; set; }
         public Texture2D Texture { get; set; }
+        public IActionState CurrentState { get; set; }
 
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         protected IPathFinding PathFinder;
 
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        // Updates Enemies ActionState, if it sees enemy, action
+        // sets to ShootingState, otherwise MovingState
+        public void Update()
+        {
+            
+        }
 
         protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture)
         {
@@ -26,6 +35,7 @@ namespace Shooter.Classes
             LifePoints = lifePoints;
             Position = position;
             Texture = texture;
+            CurrentState = new MovingState();
             _player = player;
             _player.AttachObserver(this);
         }
@@ -41,9 +51,15 @@ namespace Shooter.Classes
         }
 
         public abstract void Attack();
+
+        public void DoAction()
+        {
+            CurrentState.DoAction(this);
+        }
         
         public virtual void UpdateObserver()
         {
+            CurrentState.DoAction(this);
             Logger.Instance.Info($"Enemy notified of player position {_player.Position}");
             var start = new Point((int)Position.X, (int)Position.Y);
             var end = new Point((int) _player.Position.X, (int) _player.Position.Y);

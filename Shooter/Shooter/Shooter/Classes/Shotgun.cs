@@ -1,4 +1,6 @@
-﻿namespace Shooter.Classes
+﻿using System;
+
+namespace Shooter.Classes
 {
 	public class Shotgun : HeavyWeapon
 	{
@@ -9,7 +11,7 @@
 
         public override void Shoot()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Shotgun shoots");
         }
     }
 }
