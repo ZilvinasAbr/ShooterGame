@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
+using Shooter.PatternClasses;
 using System.Collections.Generic;
 
 namespace Shooter.Classes
@@ -55,5 +56,15 @@ namespace Shooter.Classes
         {
             return minions;
         }
-	}
+
+        public override void Accept(IEnemyVisitor enemyVisitor)
+        {
+            foreach(Enemy minion in minions)
+            {
+                minion.Accept(enemyVisitor);
+            }
+
+            enemyVisitor.Visit(this);
+        }
+    }
 }

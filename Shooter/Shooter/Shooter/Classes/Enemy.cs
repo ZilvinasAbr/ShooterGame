@@ -106,5 +106,7 @@ namespace Shooter.Classes
             _player.AttachObserver(enemy);
             return enemy;
         }
+
+        public abstract void Accept(IEnemyVisitor enemyVisitor);
     }
 }

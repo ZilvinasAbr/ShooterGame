@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
+using Shooter.PatternClasses;
 
 namespace Shooter.Classes
 {
@@ -18,6 +19,11 @@ namespace Shooter.Classes
         public override void Attack()
         {
             Weapon.Shoot();
+        }
+
+        public override void Accept(IEnemyVisitor enemyVisitor)
+        {
+            enemyVisitor.Visit(this);
         }
     }
 }

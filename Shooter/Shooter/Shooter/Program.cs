@@ -131,6 +131,35 @@ namespace Shooter
             }
         }
 
+        private static void VisitorExample()
+        {
+            Logger.Instance.Info("Running Visitor Example");
+
+            var mockPosition = Vector2.Zero;
+            var mockMap = new Map(16, 16);
+            var mockPathFinder = new PathFindingAdapter(mockMap);
+            var player1 = new Player1 { LifePoints = 100 };
+            var pistol = new Pistol();
+
+            Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null);
+            Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null);
+
+            EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
+            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
+            var enemyB1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition, null);
+            var enemyB2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
+
+            Boss1.AddMinion(enemyA1);
+            Boss1.AddMinion(Boss2);
+            Boss1.AddMinion(enemyB1);
+
+            Boss2.AddMinion(enemyA2);
+            Boss2.AddMinion(enemyB2);
+
+            Boss1.Accept(new EnemyVisitor());
+        }
+
         private static void BridgeExample()
         {
             Logger.Instance.Info("Running Bridge Example");
@@ -207,6 +236,7 @@ namespace Shooter
             FactoryExample();
             PrototypeExample();
             CompositeExample();
+            VisitorExample();
             StateExample();
 
             using (var game = new Game1())

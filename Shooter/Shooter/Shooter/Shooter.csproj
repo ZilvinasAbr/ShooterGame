@@ -55,6 +55,8 @@
     <Compile Include="Classes\MovingState.cs" />
     <Compile Include="Classes\ShootingState.cs" />
     <Compile Include="PatternClasses\EnemiesFactory.cs" />
+    <Compile Include="PatternClasses\EnemyVisitor.cs" />
+    <Compile Include="PatternClasses\IEnemyVisitor.cs" />
     <Compile Include="PatternClasses\MoveBackward.cs" />
     <Compile Include="PatternClasses\MoveForward.cs" />
     <Compile Include="PatternClasses\MoveLeft.cs" />
