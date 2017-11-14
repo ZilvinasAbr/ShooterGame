@@ -10,8 +10,12 @@ Ernestas:
 Factory
 Prototype
 Composite
+Visitor
 
 Kartu implementinti:
 
 Singleton
 Adapter
+Template Method
+Chain of Responsibility
+Null Object

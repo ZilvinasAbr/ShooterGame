@@ -67,7 +67,6 @@
     <Compile Include="PatternClasses\EnemiesConcreteFactory.cs" />
     <Compile Include="PatternClasses\EnemyPrototype.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
-    <Compile Include="Interfaces\IBossBuilder.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
     <Compile Include="Interfaces\IEnemyObserver.cs" />
     <Compile Include="Interfaces\IPathFinding.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Interfaces\IWeaponFactory.cs" />
-    <Compile Include="PatternClasses\BossBuilder.cs" />
     <Compile Include="PatternClasses\HeavyWeaponFactory.cs" />
     <Compile Include="PatternClasses\LightWeaponFactory.cs" />
     <Compile Include="PatternClasses\PathFindingAdapter.cs" />

@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
 using System;
-using System.Linq;
 using Shooter.Enums;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
@@ -24,6 +23,7 @@ namespace Shooter
         private Texture2D _playerTexture;
         private Texture2D _enemyATexture;
 		private Texture2D _enemyBTexture;
+        private Texture2D _bossTexture;
         private Texture2D _wallTexture;
         private KeyboardState _previousState;
         private IList<Enemy> _enemies;
@@ -32,6 +32,7 @@ namespace Shooter
 		private Map _map;
         private Player1 _player;
         private IPathFinding _pathFinder;
+        private int i = 0;
 
         public Game1()
         {
@@ -72,6 +73,7 @@ namespace Shooter
             _playerTexture = Content.Load<Texture2D>("player");
             _enemyATexture = Content.Load<Texture2D>("enemyA");
             _enemyBTexture = Content.Load<Texture2D>("enemyB");
+            _bossTexture = Content.Load<Texture2D>("boss");
 
 			foreach (var weapon in Enum.GetValues(typeof(WeaponName)))
 			{
@@ -89,8 +91,20 @@ namespace Shooter
             _enemies = new List<Enemy>
             {
                 enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyATexture),
-                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture)
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 500, new Vector2(1 * GameSettings.TileSize, 1 * GameSettings.TileSize), _bossTexture),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 250, new Vector2(1 * GameSettings.TileSize, 2 * GameSettings.TileSize), _bossTexture)
             };
+
+            //var boss = enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 500, new Vector2(1 * GameSettings.TileSize, 1 * GameSettings.TileSize), _bossTexture);
+            Boss boss = (Boss)_enemies[2];
+            boss.AddMinion(_enemies[0]);
+            boss.AddMinion(_enemies[1]);
+            //boss.AddMinion(_enemies[3]);
+            _enemies[2] = boss;
+
+            foreach (Enemy minion in boss.GetMinions())
+                _map.MapObjects.Add(minion);
 
             var clonedEnemies = new List<Enemy>
             {
@@ -109,6 +123,10 @@ namespace Shooter
             _enemies.Add(clonedEnemies[1]);
             _enemies.Add(clonedEnemies[2]);
             _enemies.Add(clonedEnemies[3]);
+
+            Boss boss2 = (Boss)_enemies[3];
+            boss2.AddMinion(_enemies[4]);
+            _enemies[3] = boss2;
 
             _walls = new List<Wall>
             {
@@ -157,6 +175,14 @@ namespace Shooter
 			// TODO: Add your update logic here
 			UpdateWeapon(gameTime);
             UpdatePlayer(gameTime);
+            i++;
+            if(i > 200)
+            {
+                Boss temp = (Boss)_enemies[2];
+                temp.Die();
+                _enemies[2] = temp;
+            }
+            RemoveDeadEnemies();
 
             base.Update(gameTime);
         }
@@ -217,6 +243,17 @@ namespace Shooter
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        protected void RemoveDeadEnemies()
+        {
+            foreach(Enemy enemy in _enemies)
+            {
+                if(!enemy.IsAlive())
+                {
+                    _map.MapObjects.Remove(enemy);
+                }
+            }
         }
     }
 }
