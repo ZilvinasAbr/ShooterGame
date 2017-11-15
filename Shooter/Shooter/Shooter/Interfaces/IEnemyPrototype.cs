@@ -2,7 +2,7 @@
 
 namespace Shooter.PatternClasses
 {
-    public interface EnemyPrototype
+    public interface IEnemyPrototype
     {
         Enemy Clone();
 

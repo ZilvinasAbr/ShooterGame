@@ -1,20 +1,17 @@
 ﻿using Shooter.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.PatternClasses;
 
 namespace Shooter.Classes
 {
-    public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, EnemyPrototype
+    public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, IEnemyPrototype
     {
         public Vector2 Position { get; set; }
         public int LifePoints { get; set; }
         public Texture2D Texture { get; set; }
-	public IActionState CurrentState { get; set; }
-	protected bool Alive;
+	    public IActionState CurrentState { get; set; }
+	    protected bool Alive;
 
         private readonly IPlayer _player;
         protected IWeapon Weapon;

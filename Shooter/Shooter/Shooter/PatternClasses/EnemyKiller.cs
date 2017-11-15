@@ -2,7 +2,7 @@
 
 namespace Shooter.PatternClasses
 {
-    class EnemyKiller : IEnemyVisitor
+    public class EnemyKiller : IEnemyVisitor
     {
         public void Visit(EnemyA enemyA)
         {

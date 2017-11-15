@@ -88,7 +88,7 @@ namespace Shooter
 
         private static void CompositeExample()
         {
-            Logger.Instance.Info("Running Prototype Example");
+            Logger.Instance.Info("Running Composite Example");
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);

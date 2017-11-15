@@ -72,7 +72,7 @@
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Utils\GameSettings.cs" />
     <Compile Include="PatternClasses\EnemiesConcreteFactory.cs" />
-    <Compile Include="PatternClasses\EnemyPrototype.cs" />
+    <Compile Include="Interfaces\IEnemyPrototype.cs" />
     <Compile Include="Interfaces\IBoss.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
     <Compile Include="Interfaces\IEnemyObserver.cs" />
