@@ -15,7 +15,7 @@ namespace Shooter.Classes
 	    public IActionState CurrentState { get; set; }
 	    protected bool Alive;
 
-        private Enemy _parentEnemy;
+        protected Enemy ParentEnemy;
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         protected IPathFinding PathFinder;
@@ -54,7 +54,7 @@ namespace Shooter.Classes
 
         public void SetParentEnemy(Enemy parent)
         {
-            _parentEnemy = parent;
+            ParentEnemy = parent;
         }
 
         public IWeapon GetWeapon()
@@ -67,9 +67,9 @@ namespace Shooter.Classes
             Weapon = weapon;
         }
 
-        public void TakeDamage(double damage)
+        public virtual void TakeDamage(double damage)
         {
-            _parentEnemy?.TakeDamage(damage/2);
+            ParentEnemy?.TakeDamage(damage/2);
 
             LifePoints = LifePoints - damage;
             if(LifePoints <= 0)

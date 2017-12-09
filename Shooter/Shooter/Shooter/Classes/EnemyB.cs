@@ -25,5 +25,16 @@ namespace Shooter.Classes
         {
             enemyVisitor.Visit(this);
         }
+
+        public override void TakeDamage(double damage)
+        {
+            ParentEnemy?.TakeDamage(damage);
+
+            LifePoints = LifePoints - damage;
+            if (LifePoints <= 0)
+            {
+                Alive = false;
+            }
+        }
     }
 }
