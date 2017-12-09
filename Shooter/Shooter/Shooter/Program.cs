@@ -52,13 +52,17 @@ namespace Shooter
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
-            var player1 = new Player1 { LifePoints = 100 };
+            var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
             var enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
-            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his type is " + enemyA.GetType());
-            var enemyB = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
-            Logger.Instance.Info("Second enemy has " + enemyB.LifePoints + " life points and his type is " + enemyB.GetType());
+            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
+                null);
+            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his type is " +
+                                 enemyA.GetType());
+            var enemyB =
+                enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            Logger.Instance.Info("Second enemy has " + enemyB.LifePoints + " life points and his type is " +
+                                 enemyB.GetType());
         }
 
         private static void PrototypeExample()
@@ -67,23 +71,34 @@ namespace Shooter
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
-            var player1 = new Player1 { LifePoints = 100 };
+            var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
 
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
+            var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
+                null);
 
-            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his hash code is " + enemyA.GetHashCode() + " and weapon's hash code is " + enemyA.GetWeapon().GetHashCode());
+            Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his hash code is " +
+                                 enemyA.GetHashCode() + " and weapon's hash code is " +
+                                 enemyA.GetWeapon().GetHashCode());
 
             var enemyA1 = enemyA.Clone();
-            Logger.Instance.Info("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " + enemyA1.GetHashCode() + " and weapon's hash code is " + enemyA1.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Cloned enemy has " + enemyA1.LifePoints + " life points and his hash code is " +
+                                 enemyA1.GetHashCode() + " and weapon's hash code is " +
+                                 enemyA1.GetWeapon().GetHashCode());
             var enemyA2 = enemyA.Clone();
-            Logger.Instance.Info("Second Cloned enemy has " + enemyA2.LifePoints + " life points and his hash code is " + enemyA2.GetHashCode() + " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Second Cloned enemy has " + enemyA2.LifePoints +
+                                 " life points and his hash code is " + enemyA2.GetHashCode() +
+                                 " and weapon's hash code is " + enemyA2.GetWeapon().GetHashCode());
 
             var enemyA3 = enemyA.DeepCopy();
-            Logger.Instance.Info("Deep Cloned enemy has " + enemyA3.LifePoints + " life points and his hash code is " + enemyA3.GetHashCode() + " and weapon's hash code is " + enemyA3.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Deep Cloned enemy has " + enemyA3.LifePoints + " life points and his hash code is " +
+                                 enemyA3.GetHashCode() + " and weapon's hash code is " +
+                                 enemyA3.GetWeapon().GetHashCode());
             var enemyA4 = enemyA.DeepCopy();
-            Logger.Instance.Info("Second Deep Cloned enemy has " + enemyA4.LifePoints + " life points and his hash code is " + enemyA4.GetHashCode() + " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
+            Logger.Instance.Info("Second Deep Cloned enemy has " + enemyA4.LifePoints +
+                                 " life points and his hash code is " + enemyA4.GetHashCode() +
+                                 " and weapon's hash code is " + enemyA4.GetWeapon().GetHashCode());
         }
 
         private static void CompositeExample()
@@ -92,17 +107,21 @@ namespace Shooter
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
-            var player1 = new Player1 { LifePoints = 100 };
+            var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
 
             Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null);
             Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null);
 
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
-            var enemyB1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
-            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition, null);
-            var enemyB2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
+            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
+                null);
+            var enemyB1 =
+                enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition,
+                null);
+            var enemyB2 =
+                enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
 
             Boss1.AddMinion(enemyA1);
             Boss1.AddMinion(Boss2);
@@ -117,10 +136,10 @@ namespace Shooter
             foreach (Enemy enemy in Boss1.GetMinions())
             {
                 Logger.Instance.Info("Minion has " + enemy.LifePoints + "HP, his boss is Boss" + i + ".");
-                if(enemy.GetType() == typeof(Boss))
+                if (enemy.GetType() == typeof(Boss))
                 {
                     i++;
-                    Boss temp = (Boss)enemy;
+                    Boss temp = (Boss) enemy;
                     Logger.Instance.Info("This minion is boss as well.");
                     foreach (Enemy minion in temp.GetMinions())
                     {
@@ -138,17 +157,21 @@ namespace Shooter
             var mockPosition = Vector2.Zero;
             var mockMap = new Map(16, 16);
             var mockPathFinder = new PathFindingAdapter(mockMap);
-            var player1 = new Player1 { LifePoints = 100 };
+            var player1 = new Player1 {LifePoints = 100};
             var pistol = new Pistol();
 
             Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null);
             Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null);
 
             EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
-            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition, null);
-            var enemyB1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
-            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition, null);
-            var enemyB2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
+            var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
+                null);
+            var enemyB1 =
+                enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null);
+            var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition,
+                null);
+            var enemyB2 =
+                enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null);
 
             Boss1.AddMinion(enemyA1);
             Boss1.AddMinion(Boss2);
@@ -189,10 +212,10 @@ namespace Shooter
         private static void AbstractFactoryExample()
         {
             var weaponFamily = WeaponType.Heavy;
-			var weapon = WeaponName.Bazooka;
+            var weapon = WeaponName.Bazooka;
 
-			var factory = WeaponFactory.CreateFactory(weaponFamily);
-			var createdWeapon = factory.CreateWeapon(weapon);
+            var factory = WeaponFactory.CreateFactory(weaponFamily);
+            var createdWeapon = factory.CreateWeapon(weapon);
         }
 
         private static void AdapterExample()
@@ -215,11 +238,41 @@ namespace Shooter
             IPathFinding pathfindingAdapter = new PathFindingAdapter(mockMap);
             var weapon = new Shotgun();
             var mockPlayer = new Player1 {LifePoints = 100};
-            
+
             var enemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 50, mockPosition, null);
             enemy.DoAction();
             enemy.CurrentState = new ShootingState();
             enemy.DoAction();
+        }
+
+        private static void ChainOfResponsibilityExample()
+        {
+            Console.WriteLine("Chain of Responsibility Example:");
+            var mockPosition = Vector2.Zero;
+            int mapSize = 32;
+            var mockMap = new Map(mapSize, mapSize);
+            IPathFinding pathfindingAdapter = new PathFindingAdapter(mockMap);
+            var weapon = new Shotgun();
+            var mockPlayer = new Player1 { LifePoints = 100 };
+
+            var grandparentEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null);
+            var parentEnemy = new EnemyB(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null);
+            var childEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null);
+
+            parentEnemy.SetParentEnemy(grandparentEnemy);
+            childEnemy.SetParentEnemy(parentEnemy);
+
+            Console.WriteLine("Life points before child takes damage:");
+            Console.WriteLine($"Grandparent: {grandparentEnemy.LifePoints}");
+            Console.WriteLine($"Parent: {parentEnemy.LifePoints}");
+            Console.WriteLine($"Child: {childEnemy.LifePoints}");
+
+            childEnemy.TakeDamage(100);
+
+            Console.WriteLine("Life points after child takes damage:");
+            Console.WriteLine($"Grandparent: {grandparentEnemy.LifePoints}");
+            Console.WriteLine($"Parent: {parentEnemy.LifePoints}");
+            Console.WriteLine($"Child: {childEnemy.LifePoints}");
         }
 
         /// <summary>
@@ -238,6 +291,7 @@ namespace Shooter
             CompositeExample();
             VisitorExample();
             StateExample();
+            ChainOfResponsibilityExample();
 
             using (var game = new Game1())
                 game.Run();

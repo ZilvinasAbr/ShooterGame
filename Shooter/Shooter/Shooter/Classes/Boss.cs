@@ -10,7 +10,7 @@ namespace Shooter.Classes
     {
         private IList<Enemy> minions;
 
-        public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture) : base(pathFinder, weapon, player, lifePoints, position, texture)
+        public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture) : base(pathFinder, weapon, player, lifePoints, position, texture)
         {
             minions = new List<Enemy>();
         }
@@ -31,11 +31,13 @@ namespace Shooter.Classes
         public void AddMinion(Enemy enemy)
         {
             minions.Add(enemy);
+            enemy.SetParentEnemy(this);
         }
 
         public void RemoveMinion(Enemy enemy)
         {
             minions.Remove(enemy);
+            enemy.SetParentEnemy(null);
         }
 
         public override void Die()

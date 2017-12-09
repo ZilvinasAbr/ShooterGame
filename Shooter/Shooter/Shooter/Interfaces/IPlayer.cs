@@ -4,6 +4,6 @@ namespace Shooter.Interfaces
 {
     public interface IPlayer : IMapObject, IPlayerSubject
     {
-        int LifePoints { get; set; }
+        double LifePoints { get; set; }
     }
 }

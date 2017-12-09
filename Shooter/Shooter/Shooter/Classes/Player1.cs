@@ -23,7 +23,7 @@ namespace Shooter.Classes
             
         }
 
-        public int LifePoints { get; set; }
+        public double LifePoints { get; set; }
 
         public Player1()
         {

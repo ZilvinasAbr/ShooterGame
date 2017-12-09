@@ -8,11 +8,12 @@ namespace Shooter.Classes
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, IEnemyPrototype
     {
         public Vector2 Position { get; set; }
-        public int LifePoints { get; set; }
+        public double LifePoints { get; set; }
         public Texture2D Texture { get; set; }
 	    public IActionState CurrentState { get; set; }
 	    protected bool Alive;
 
+        private Enemy parentEnemy;
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         protected IPathFinding PathFinder;
@@ -26,7 +27,7 @@ namespace Shooter.Classes
             
         }
 
-        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, int lifePoints, Vector2 position, Texture2D texture)
+        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture)
         {
             PathFinder = pathFinder;
             Weapon = weapon;
@@ -39,6 +40,11 @@ namespace Shooter.Classes
             Alive = true;
         }
 
+        public void SetParentEnemy(Enemy parent)
+        {
+            parentEnemy = parent;
+        }
+
         public IWeapon GetWeapon()
         {
             return Weapon;
@@ -49,8 +55,10 @@ namespace Shooter.Classes
             Weapon = weapon;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(double damage)
         {
+            parentEnemy?.TakeDamage(damage/2);
+
             LifePoints = LifePoints - damage;
             if(LifePoints <= 0)
             {
