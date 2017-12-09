@@ -1,4 +1,5 @@
-﻿using Shooter.Interfaces;
+﻿using System;
+using Shooter.Interfaces;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,11 +12,22 @@ namespace Shooter.Classes
     {
         private readonly IList<IEnemyObserver> _enemyObservers;
         public Texture2D Texture { get; set; }
+        public IMap Map { get; set; }
         public Vector2 Position { get; set; }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, Position, Color.White);
+        }
+
+        public void Receive(string message)
+        {
+            Console.WriteLine($"Received a message: {message}");
+        }
+
+        public void Send(string message)
+        {
+            Map.Broadcast(message, this);
         }
 
         public void Update(GameTime gameTime)

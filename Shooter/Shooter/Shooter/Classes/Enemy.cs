@@ -1,4 +1,5 @@
-﻿using Shooter.Interfaces;
+﻿using System;
+using Shooter.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.PatternClasses;
@@ -7,18 +8,29 @@ namespace Shooter.Classes
 {
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, IEnemyPrototype
     {
+        public IMap Map { get; set; }
         public Vector2 Position { get; set; }
         public double LifePoints { get; set; }
         public Texture2D Texture { get; set; }
 	    public IActionState CurrentState { get; set; }
 	    protected bool Alive;
 
-        private Enemy parentEnemy;
+        private Enemy _parentEnemy;
         private readonly IPlayer _player;
         protected IWeapon Weapon;
         protected IPathFinding PathFinder;
 
         public abstract void Draw(SpriteBatch spriteBatch);
+
+        public void Receive(string message)
+        {
+            Console.WriteLine($"Received a message: {message}");
+        }
+
+        public void Send(string message)
+        {
+            Map.Broadcast(message, this);
+        }
 
         // Updates Enemies ActionState, if it sees enemy, action
         // sets to ShootingState, otherwise MovingState
@@ -42,7 +54,7 @@ namespace Shooter.Classes
 
         public void SetParentEnemy(Enemy parent)
         {
-            parentEnemy = parent;
+            _parentEnemy = parent;
         }
 
         public IWeapon GetWeapon()
@@ -57,7 +69,7 @@ namespace Shooter.Classes
 
         public void TakeDamage(double damage)
         {
-            parentEnemy?.TakeDamage(damage/2);
+            _parentEnemy?.TakeDamage(damage/2);
 
             LifePoints = LifePoints - damage;
             if(LifePoints <= 0)

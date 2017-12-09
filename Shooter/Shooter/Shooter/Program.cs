@@ -275,6 +275,34 @@ namespace Shooter
             Console.WriteLine($"Child: {childEnemy.LifePoints}");
         }
 
+        private static void MediatorExample()
+        {
+            Console.WriteLine("Chain of Responsibility Example:");
+
+            var mapWidthAndHeight = 16;
+            var mockPosition = Vector2.Zero;
+            var map = new Map(mapWidthAndHeight, mapWidthAndHeight);
+            var mockPlayer = new Player1 { LifePoints = 100 };
+            var mapObjects = new List<IMapObject>
+            {
+                new EnemyA(null, null, mockPlayer, 100, mockPosition, null),
+                new EnemyB(null, null, mockPlayer, 100, mockPosition, null),
+                new EnemyA(null, null, mockPlayer, 100, mockPosition, null),
+                new EnemyB(null, null, mockPlayer, 100, mockPosition, null),
+                new EnemyA(null, null, mockPlayer, 100, mockPosition, null),
+                mockPlayer,
+                new Wall()
+            };
+
+            foreach (var mapObject in mapObjects)
+            {
+                map.AddMapObject(mapObject);
+            }
+
+            mapObjects[0].Send("Enemy 0 sends a message");
+            mapObjects[1].Send("Enemy 1 sends a message");
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -292,6 +320,7 @@ namespace Shooter
             VisitorExample();
             StateExample();
             ChainOfResponsibilityExample();
+            MediatorExample();
 
             using (var game = new Game1())
                 game.Run();

@@ -2,6 +2,7 @@
 Observer
 Bridge
 State
+Mediator
 
 Mantas:
 AbstractFactory

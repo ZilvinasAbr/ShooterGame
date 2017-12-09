@@ -84,7 +84,7 @@ namespace Shooter
 
             _player = new Player1(Vector2.Zero, _playerTexture);
             _map = new Map(GameSettings.MapSize, GameSettings.MapSize) {BackgroundTexture = _backgroundTexture};
-            _map.MapObjects.Add(_player);
+            _map.AddMapObject(_player);
             _pathFinder = new PathFindingAdapter(_map);
 
             var enemiesFactory = new EnemiesConcreteFactory();
@@ -102,7 +102,7 @@ namespace Shooter
             boss.AddMinion(_enemies[3]);
 
             foreach (Enemy minion in boss.GetMinions())
-                _map.MapObjects.Add(minion);
+                _map.AddMapObject(minion);
 
             var clonedEnemies = new List<Enemy>
             {
@@ -138,15 +138,15 @@ namespace Shooter
 
             foreach (var enemy in _enemies)
             {
-                _map.MapObjects.Add(enemy);
+                _map.AddMapObject(enemy);
             }
             foreach (var wall in _walls)
             {
-                _map.MapObjects.Add(wall);
+                _map.AddMapObject(wall);
             }
 			foreach (var weapon in _weapons)
 			{
-				_map.MapObjects.Add(weapon);
+				_map.AddMapObject(weapon);
 			}
         }
 
