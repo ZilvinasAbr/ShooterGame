@@ -7,6 +7,7 @@ namespace Shooter.Classes
         public void DoAction(Enemy enemy)
         {
             Console.WriteLine("Moves");
+            enemy.MoveToPlayer();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Shooter.Classes
         // sets to ShootingState, otherwise MovingState
         public void Update()
         {
-            
+            CurrentState.DoAction(this);
         }
 
         protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture)
@@ -94,20 +94,29 @@ namespace Shooter.Classes
         {
             CurrentState.DoAction(this);
         }
-        
-        public virtual void UpdateObserver()
+
+        public void MoveToPlayer()
         {
-            CurrentState.DoAction(this);
-            Logger.Instance.Info($"Enemy notified of player position {_player.Position}");
             var start = new Point((int)Position.X, (int)Position.Y);
-            var end = new Point((int) _player.Position.X, (int) _player.Position.Y);
+            var end = new Point((int)_player.Position.X, (int)_player.Position.Y);
             var nextPoint = PathFinder.NextPoint(start, end);
-            
+
             var newPosition = new Vector2(nextPoint.X, nextPoint.Y);
             if (newPosition != _player.Position)
             {
                 Position = newPosition;
             }
+        }
+        
+        public virtual void UpdateObserver()
+        {
+            DoAction();
+            Logger.Instance.Info($"Enemy notified of player position {_player.Position}");
+        }
+
+        public virtual void Idle()
+        {
+            // Do nothing
         }
 
         public Enemy Clone()

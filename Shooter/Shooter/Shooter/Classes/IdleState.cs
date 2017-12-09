@@ -4,7 +4,7 @@
     {
         public void DoAction(Enemy enemy)
         {
-
+            enemy.Idle();
         }
     }
 }
