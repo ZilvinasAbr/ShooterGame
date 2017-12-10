@@ -219,6 +219,12 @@ namespace Shooter
 
             var keyboardState = Keyboard.GetState();
 
+			if (keyboardState.IsKeyDown(Keys.Space))
+			{
+				var moves = MoveMemory.MovesHistory;
+				_player.RestoreMemento(moves[moves.Capacity - 2]);
+			}
+
 			_player.Move(keyboardState, _previousState);
 
             _previousState = keyboardState;

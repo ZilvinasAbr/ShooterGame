@@ -90,9 +90,21 @@ namespace Shooter.Classes
 
 			if (cmd != null)
 			{
+				MoveMemory.SaveState(SaveMemento());
 				cmd.Execute();
                 Notify();
 			}
 		}
-    }
+
+		public Memento SaveMemento()
+		{
+			return new Memento(Position.X, Position.Y);
+		}
+
+		// Restores memento
+		public void RestoreMemento(Memento memento)
+		{
+			Position = new Vector2(memento.XCord + GameSettings.TileSize, memento.YCord);
+		}
+	}
 }

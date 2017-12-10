@@ -59,9 +59,11 @@
     <Compile Include="PatternClasses\EnemyKiller.cs" />
     <Compile Include="PatternClasses\EnemyVisitor.cs" />
     <Compile Include="Interfaces\IEnemyVisitor.cs" />
+    <Compile Include="PatternClasses\Memento.cs" />
     <Compile Include="PatternClasses\MoveBackward.cs" />
     <Compile Include="PatternClasses\MoveForward.cs" />
     <Compile Include="PatternClasses\MoveLeft.cs" />
+    <Compile Include="PatternClasses\MoveMemory.cs" />
     <Compile Include="PatternClasses\MoveRight.cs" />
     <Compile Include="Classes\Pistol.cs" />
     <Compile Include="Classes\Shotgun.cs" />
