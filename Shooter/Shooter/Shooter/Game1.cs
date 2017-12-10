@@ -222,7 +222,7 @@ namespace Shooter
 			if (keyboardState.IsKeyDown(Keys.Space))
 			{
 				var moves = MoveMemory.MovesHistory;
-				_player.RestoreMemento(moves[moves.Capacity - 2]);
+				_player.RestoreMemento(moves[moves.Count - 4]);
 			}
 
 			_player.Move(keyboardState, _previousState);
