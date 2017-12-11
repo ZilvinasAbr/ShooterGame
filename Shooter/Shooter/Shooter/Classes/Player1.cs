@@ -102,9 +102,9 @@ namespace Shooter.Classes
 		}
 
 		// Restores memento
-		public void RestoreMemento(Memento memento)
+		public void RestoreMemento(Memento previousState)
 		{
-			Position = new Vector2(memento.XCord + GameSettings.TileSize, memento.YCord);
+			Position = new Vector2(previousState.XCord + GameSettings.TileSize, previousState.YCord);
 		}
 	}
 }
