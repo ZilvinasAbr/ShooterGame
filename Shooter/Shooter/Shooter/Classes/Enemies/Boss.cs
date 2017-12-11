@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
-using System.Collections.Generic;
 
-namespace Shooter.Classes
+namespace Shooter.Classes.Enemies
 {
     public class Boss : Enemy, IBoss
     {

@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
-using System;
+using Shooter.Utils;
 
-namespace Shooter.Classes
+namespace Shooter.Classes.Weapons
 {
     public abstract class Weapon : IWeapon, IMapObject
     {

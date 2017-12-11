@@ -1,4 +1,4 @@
-﻿using Shooter.Classes;
+﻿using Shooter.Classes.Weapons;
 
 namespace Shooter.Interfaces
 {

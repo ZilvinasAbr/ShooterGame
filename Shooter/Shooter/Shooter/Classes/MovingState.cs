@@ -1,4 +1,5 @@
 ﻿using System;
+using Shooter.Classes.Enemies;
 
 namespace Shooter.Classes
 {

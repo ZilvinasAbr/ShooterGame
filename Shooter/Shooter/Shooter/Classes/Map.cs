@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Shooter.Classes.Enemies;
 using Shooter.Interfaces;
 
 namespace Shooter.Classes

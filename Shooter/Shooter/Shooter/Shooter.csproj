@@ -74,6 +74,7 @@
     <Compile Include="Enums\WeaponName.cs" />
     <Compile Include="Enums\WeaponType.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="PatternClasses\NullObjectWeapon.cs" />
     <Compile Include="Utils\GameSettings.cs" />
     <Compile Include="PatternClasses\EnemiesConcreteFactory.cs" />
     <Compile Include="Interfaces\IEnemyPrototype.cs" />

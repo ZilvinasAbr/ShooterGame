@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
 using System;
+using Shooter.Classes.Enemies;
 using Shooter.Classes.Weapons;
 using Shooter.Enums;
 using Shooter.Interfaces;
@@ -192,7 +193,7 @@ namespace Shooter
 
 			if (val == 0)
 			{
-				Weapon weapon = null;
+				Weapon weapon = new NullObjectWeapon();
 
 				var factory = WeaponFactory.CreateFactory((WeaponType)StaticRandom.Instance.Next(0, 2));
 			

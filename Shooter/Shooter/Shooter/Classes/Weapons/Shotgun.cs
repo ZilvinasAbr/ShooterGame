@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Shooter.Classes.Weapons
+﻿namespace Shooter.Classes.Weapons
 {
 	public class Shotgun : HeavyWeapon
 	{

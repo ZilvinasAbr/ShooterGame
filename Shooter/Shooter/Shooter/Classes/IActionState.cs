@@ -1,4 +1,6 @@
-﻿namespace Shooter.Classes
+﻿using Shooter.Classes.Enemies;
+
+namespace Shooter.Classes
 {
     public interface IActionState
     {

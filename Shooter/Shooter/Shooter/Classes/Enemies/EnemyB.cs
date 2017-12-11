@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
 
-namespace Shooter.Classes
+namespace Shooter.Classes.Enemies
 {
     public class EnemyB : Enemy
     {

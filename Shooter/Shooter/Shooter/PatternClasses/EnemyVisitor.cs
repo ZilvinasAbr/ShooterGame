@@ -1,4 +1,6 @@
 ﻿using Shooter.Classes;
+using Shooter.Classes.Enemies;
+using Shooter.Interfaces;
 
 namespace Shooter.PatternClasses
 {

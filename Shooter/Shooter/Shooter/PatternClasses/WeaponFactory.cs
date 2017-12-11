@@ -1,4 +1,4 @@
-﻿using Shooter.Classes;
+﻿using Shooter.Classes.Weapons;
 using Shooter.Enums;
 
 namespace Shooter.PatternClasses

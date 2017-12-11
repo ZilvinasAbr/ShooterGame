@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using DeenGames.Utils.AStarPathFinder;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Shooter.Classes;
+using Shooter.Classes.Enemies;
 using Shooter.Classes.Weapons;
 using Shooter.Enums;
 using Shooter.Interfaces;

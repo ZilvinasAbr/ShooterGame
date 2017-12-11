@@ -1,6 +1,6 @@
-﻿using Shooter.Classes;
+﻿using Shooter.Classes.Enemies;
 
-namespace Shooter.PatternClasses
+namespace Shooter.Interfaces
 {
     public interface IEnemyPrototype
     {

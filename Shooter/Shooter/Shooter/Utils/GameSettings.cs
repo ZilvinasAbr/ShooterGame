@@ -1,4 +1,4 @@
-﻿namespace Shooter
+﻿namespace Shooter.Utils
 {
 	public static class GameSettings
 	{

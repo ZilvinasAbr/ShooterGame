@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.PatternClasses;
 
-namespace Shooter.Classes
+namespace Shooter.Classes.Enemies
 {
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, IEnemyPrototype
     {

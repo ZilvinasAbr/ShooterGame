@@ -1,7 +1,9 @@
 ﻿using DeenGames.Utils.AStarPathFinder;
 using Microsoft.Xna.Framework;
 using Shooter.Classes;
+using Shooter.Classes.Enemies;
 using Shooter.Interfaces;
+using Shooter.Utils;
 
 namespace Shooter.PatternClasses
 {
