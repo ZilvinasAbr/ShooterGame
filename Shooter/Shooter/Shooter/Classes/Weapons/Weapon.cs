@@ -16,7 +16,7 @@ namespace Shooter.Classes.Weapons
         public double Damage { get; set; }
         public decimal Price { get; set; }
         public int Range { get; set; }
-        public int Magazine { get; set; }
+        public int Ammo { get; set; }
 		public bool SlowsSpeed { get; set; }
 
         protected Weapon()
@@ -25,7 +25,29 @@ namespace Shooter.Classes.Weapons
             Position = new Vector2(randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize, randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize);
         }
 
-        public abstract void Shoot(double baseDamage);
+        public void PrepareToShoot(double baseDamage)
+        {
+            if (IsWeaponReloadable())
+            {
+                if (ShouldReload())
+                {
+                    Reload();
+                }
+                else
+                {
+                    Shoot(baseDamage);
+                }
+            }
+            else
+            {
+                Shoot(baseDamage);
+            }
+        }
+
+        protected abstract bool IsWeaponReloadable();
+        protected abstract void Reload();
+        protected abstract bool ShouldReload();
+        protected abstract void Shoot(double baseDamage);
 
         public Weapon Clone()
         {

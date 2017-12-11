@@ -4,7 +4,7 @@ namespace Shooter.Interfaces
 {
     public interface IWeapon
     {
-        void Shoot(double baseDamage);
+        void PrepareToShoot(double baseDamage);
         Weapon Clone();
     }
 }

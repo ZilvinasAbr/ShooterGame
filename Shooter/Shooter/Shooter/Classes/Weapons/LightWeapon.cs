@@ -1,16 +1,11 @@
 ﻿namespace Shooter.Classes.Weapons
 {
-	public class LightWeapon : Weapon
+	public abstract class LightWeapon : Weapon
 	{
-		public LightWeapon()
+		protected LightWeapon()
 		{
 			SlowsSpeed = false;
 		    Damage = 12;
 		}
-
-		public override void Shoot(double baseDamage)
-		{
-		    Logger.Instance.Info($"Light Weapon shoots with total damage of: {baseDamage + Damage}");
-        }
 	}
 }

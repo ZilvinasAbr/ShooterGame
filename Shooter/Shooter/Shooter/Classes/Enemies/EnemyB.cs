@@ -18,7 +18,7 @@ namespace Shooter.Classes.Enemies
 
         public override void Attack()
         {
-            Weapon.Shoot(BaseDamage);
+            Weapon.PrepareToShoot(BaseDamage);
         }
 
         public override void Accept(IEnemyVisitor enemyVisitor)

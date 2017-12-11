@@ -2,13 +2,37 @@
 {
 	public class Pistol : LightWeapon
 	{
-		public Pistol()
+	    public int AmmoLeft { get; set; }
+	    public int MagazinesLeft { get; set; }
+	    public int MagazineSize { get; set; }
+
+        public Pistol()
 		{
 		    Damage = 11;
+		    MagazineSize = 20;
+		    AmmoLeft = MagazineSize;
+		    MagazinesLeft = 4;
 		}
 
-		public override void Shoot(double baseDamage)
-		{
+	    protected override bool IsWeaponReloadable()
+	    {
+	        return true;
+	    }
+
+	    protected override void Reload()
+	    {
+	        MagazinesLeft -= 1;
+	        AmmoLeft = MagazineSize;
+	    }
+
+	    protected override bool ShouldReload()
+	    {
+	        return AmmoLeft == 0;
+	    }
+
+	    protected override void Shoot(double baseDamage)
+	    {
+	        AmmoLeft -= 1;
 		    Logger.Instance.Info($"Pistol shoots with total damage of: {baseDamage + Damage}");
         }
 	}
