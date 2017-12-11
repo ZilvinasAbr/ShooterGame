@@ -41,16 +41,16 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classes\Bazooka.cs" />
-    <Compile Include="Classes\Boss.cs" />
-    <Compile Include="Classes\Enemy.cs" />
-    <Compile Include="Classes\EnemyA.cs" />
-    <Compile Include="Classes\EnemyB.cs" />
-    <Compile Include="Classes\HeavyWeapon.cs" />
+    <Compile Include="Classes\Weapons\Bazooka.cs" />
+    <Compile Include="Classes\Enemies\Boss.cs" />
+    <Compile Include="Classes\Enemies\Enemy.cs" />
+    <Compile Include="Classes\Enemies\EnemyA.cs" />
+    <Compile Include="Classes\Enemies\EnemyB.cs" />
+    <Compile Include="Classes\Weapons\HeavyWeapon.cs" />
     <Compile Include="Classes\IActionState.cs" />
     <Compile Include="Classes\IdleState.cs" />
     <Compile Include="Classes\IMapObject.cs" />
-    <Compile Include="Classes\LightWeapon.cs" />
+    <Compile Include="Classes\Weapons\LightWeapon.cs" />
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\MovingState.cs" />
     <Compile Include="Classes\ShootingState.cs" />
@@ -66,10 +66,10 @@
     <Compile Include="PatternClasses\MoveLeft.cs" />
     <Compile Include="PatternClasses\MoveMemory.cs" />
     <Compile Include="PatternClasses\MoveRight.cs" />
-    <Compile Include="Classes\Pistol.cs" />
-    <Compile Include="Classes\Shotgun.cs" />
+    <Compile Include="Classes\Weapons\Pistol.cs" />
+    <Compile Include="Classes\Weapons\Shotgun.cs" />
     <Compile Include="Classes\Wall.cs" />
-    <Compile Include="Classes\SMG.cs" />
+    <Compile Include="Classes\Weapons\SMG.cs" />
     <Compile Include="Enums\EnemyType.cs" />
     <Compile Include="Enums\WeaponName.cs" />
     <Compile Include="Enums\WeaponType.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Interfaces\IPlayerSubject.cs" />
     <Compile Include="Classes\Map.cs" />
     <Compile Include="Classes\Player1.cs" />
-    <Compile Include="Classes\Weapon.cs" />
+    <Compile Include="Classes\Weapons\Weapon.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Interfaces\IWeaponFactory.cs" />

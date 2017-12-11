@@ -18,11 +18,11 @@ namespace Shooter.Classes
             mapObject.Map = this;
         }
 
-        public void Broadcast(string message, IMapObject sender)
+        public void BroadcastToEnemies(string message, IMapObject sender)
         {
             foreach (var mapObject in MapObjects)
             {
-                if (sender != mapObject)
+                if (sender != mapObject && mapObject is Enemy)
                 {
                     mapObject.Receive(message);
                 }

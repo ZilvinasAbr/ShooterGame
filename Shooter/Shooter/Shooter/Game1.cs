@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Shooter.Classes;
 using System;
+using Shooter.Classes.Weapons;
 using Shooter.Enums;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;

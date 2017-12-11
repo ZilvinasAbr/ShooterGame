@@ -11,6 +11,6 @@ namespace Shooter.Interfaces
         int Height { get; }
         IList<IMapObject> MapObjects { get; set; }
         void AddMapObject(IMapObject mapObject);
-        void Broadcast(string message, IMapObject sender);
+        void BroadcastToEnemies(string message, IMapObject sender);
     }
 }

@@ -4,6 +4,7 @@ using DeenGames.Utils.AStarPathFinder;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Shooter.Classes;
+using Shooter.Classes.Weapons;
 using Shooter.Enums;
 using Shooter.Interfaces;
 using Shooter.PatternClasses;
@@ -115,8 +116,8 @@ namespace Shooter
 			var pistol = new Pistol();
 			var enemyState = new EnemyStateFactory();
 
-			Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"));
-			Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"));
+			var boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"));
+			var boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"));
 
 			EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
 			var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
@@ -128,17 +129,17 @@ namespace Shooter
 			var enemyB2 =
 				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"));
 
-			Boss1.AddMinion(enemyA1);
-			Boss1.AddMinion(Boss2);
-			Boss1.AddMinion(enemyB1);
+			boss1.AddMinion(enemyA1);
+			boss1.AddMinion(boss2);
+			boss1.AddMinion(enemyB1);
 
-			Boss2.AddMinion(enemyA2);
-			Boss2.AddMinion(enemyB2);
+			boss2.AddMinion(enemyA2);
+			boss2.AddMinion(enemyB2);
 
 
-			Logger.Instance.Info("Boss1 has " + Boss1.LifePoints + "HP. His minions:");
+			Logger.Instance.Info("Boss1 has " + boss1.LifePoints + "HP. His minions:");
 			int i = 1;
-			foreach (Enemy enemy in Boss1.GetMinions())
+			foreach (Enemy enemy in boss1.GetMinions())
 			{
 				Logger.Instance.Info("Minion has " + enemy.LifePoints + "HP, his boss is Boss" + i + ".");
 				if (enemy.GetType() == typeof(Boss))

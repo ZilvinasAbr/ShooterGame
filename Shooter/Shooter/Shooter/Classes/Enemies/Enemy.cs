@@ -8,9 +8,12 @@ namespace Shooter.Classes
 {
     public abstract class Enemy : IEnemy, IEnemyObserver, IMapObject, IEnemyPrototype
     {
+        public const string EnemySpawned = "EnemySpawned";
+
         public IMap Map { get; set; }
         public Vector2 Position { get; set; }
         public double LifePoints { get; set; }
+        public double BaseDamage { get; set; } = 0;
         public Texture2D Texture { get; set; }
 	    public IActionState CurrentState { get; set; }
 	    protected bool Alive;
@@ -24,12 +27,16 @@ namespace Shooter.Classes
 
         public void Receive(string message)
         {
-            Console.WriteLine($"Received a message: {message}");
+            if (message == EnemySpawned)
+            {
+                Logger.Instance.Info("Enemy spawned, base damage increases");
+                BaseDamage += BaseDamage * 0.2;
+            }
         }
 
         public void Send(string message)
         {
-            Map.Broadcast(message, this);
+            Map.BroadcastToEnemies(message, this);
         }
 
         // Updates Enemies ActionState, if it sees enemy, action
@@ -50,6 +57,7 @@ namespace Shooter.Classes
             _player = player;
             _player.AttachObserver(this);
             Alive = true;
+            Send(EnemySpawned);
         }
 
         public void SetParentEnemy(Enemy parent)

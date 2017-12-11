@@ -27,7 +27,7 @@ namespace Shooter.Classes
 
         public void Send(string message)
         {
-            Map.Broadcast(message, this);
+            Map.BroadcastToEnemies(message, this);
         }
 
         public void Update(GameTime gameTime)

@@ -5,9 +5,9 @@ using Shooter.PatternClasses;
 
 namespace Shooter.Classes
 {
-    public class EnemyB : Enemy
+    public class EnemyA : Enemy
     {
-        public EnemyB(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state) : base(pathFinder, weapon, player, lifePoints, position, texture, state)
+        public EnemyA(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state) : base(pathFinder, weapon, player, lifePoints, position, texture, state)
         {
         }
 
@@ -18,7 +18,7 @@ namespace Shooter.Classes
 
         public override void Attack()
         {
-            Weapon.Shoot();
+            Weapon.Shoot(BaseDamage);
         }
 
         public override void Accept(IEnemyVisitor enemyVisitor)
@@ -28,7 +28,7 @@ namespace Shooter.Classes
 
         public override void TakeDamage(double damage)
         {
-            ParentEnemy?.TakeDamage(damage);
+            ParentEnemy?.TakeDamage(damage / 3);
 
             LifePoints = LifePoints - damage;
             if (LifePoints <= 0)

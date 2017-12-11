@@ -12,7 +12,7 @@ namespace Shooter.Classes
         public IMap Map { get; set; }
         public Vector2 Position { get; set; }
         public string Name { get; set; }
-        public int Damage { get; set; }
+        public double Damage { get; set; }
         public decimal Price { get; set; }
         public int Range { get; set; }
         public int Magazine { get; set; }
@@ -24,7 +24,7 @@ namespace Shooter.Classes
             Position = new Vector2(randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize, randomPosition.Next(0, GameSettings.MapSize) * GameSettings.TileSize);
         }
 
-        public abstract void Shoot();
+        public abstract void Shoot(double baseDamage);
 
         public Weapon Clone()
         {
@@ -43,7 +43,7 @@ namespace Shooter.Classes
 
         public void Send(string message)
         {
-            Map.Broadcast(message, this);
+            Map.BroadcastToEnemies(message, this);
         }
     }
 }

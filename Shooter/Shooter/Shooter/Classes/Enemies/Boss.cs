@@ -13,6 +13,7 @@ namespace Shooter.Classes
         public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state) : base(pathFinder, weapon, player, lifePoints, position, texture, state)
         {
             minions = new List<Enemy>();
+            BaseDamage = 20;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -22,6 +23,7 @@ namespace Shooter.Classes
 
         public override void Attack()
         {
+            Weapon.Shoot(BaseDamage);
         }
 
         public void BossAttack()
