@@ -39,14 +39,14 @@ namespace Shooter.Classes
             CurrentState.DoAction(this);
         }
 
-        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture)
+        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state)
         {
             PathFinder = pathFinder;
             Weapon = weapon;
             LifePoints = lifePoints;
             Position = position;
             Texture = texture;
-            CurrentState = new MovingState();
+            CurrentState = state;
             _player = player;
             _player.AttachObserver(this);
             Alive = true;

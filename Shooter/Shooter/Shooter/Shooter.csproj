@@ -57,6 +57,7 @@
     <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="PatternClasses\EnemiesFactory.cs" />
     <Compile Include="PatternClasses\EnemyKiller.cs" />
+    <Compile Include="PatternClasses\EnemyStateFactory.cs" />
     <Compile Include="PatternClasses\EnemyVisitor.cs" />
     <Compile Include="Interfaces\IEnemyVisitor.cs" />
     <Compile Include="PatternClasses\Memento.cs" />

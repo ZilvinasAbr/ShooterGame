@@ -87,13 +87,15 @@ namespace Shooter
             _map.AddMapObject(_player);
             _pathFinder = new PathFindingAdapter(_map);
 
+			var enemyState = new EnemyStateFactory();
+
             var enemiesFactory = new EnemiesConcreteFactory();
             _enemies = new List<Enemy>
             {
-                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyATexture),
-                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture),
-                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 500, new Vector2(1 * GameSettings.TileSize, 1 * GameSettings.TileSize), _bossTexture),
-                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 250, new Vector2(1 * GameSettings.TileSize, 2 * GameSettings.TileSize), _bossTexture)
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Small, new Bazooka(), _player, 100, new Vector2(5*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyATexture, enemyState.GetState("Moving")),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Big, new Pistol(), _player, 100, new Vector2(3*GameSettings.TileSize, 5*GameSettings.TileSize), _enemyBTexture, enemyState.GetState("Moving")),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 500, new Vector2(1 * GameSettings.TileSize, 1 * GameSettings.TileSize), _bossTexture, enemyState.GetState("Moving")),
+                enemiesFactory.CreateEnemy(_pathFinder, EnemyType.Boss, new Pistol(), _player, 250, new Vector2(1 * GameSettings.TileSize, 2 * GameSettings.TileSize), _bossTexture, enemyState.GetState("Moving"))
             };
 
             Boss boss = (Boss)_enemies[2];
@@ -222,7 +224,11 @@ namespace Shooter
 			if (keyboardState.IsKeyDown(Keys.Space))
 			{
 				var moves = MoveMemory.MovesHistory;
-				_player.RestoreMemento(moves[moves.Count - 4]);
+				if (moves.Count > 4)
+				{
+					_player.RestoreMemento(moves[moves.Count - 4]);
+					MoveMemory.MovesHistory.Clear();
+				}
 			}
 
 			_player.Move(keyboardState, _previousState);

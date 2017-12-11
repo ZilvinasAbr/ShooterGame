@@ -8,16 +8,16 @@ namespace Shooter.PatternClasses
 {
     public class EnemiesConcreteFactory : EnemiesFactory
     {
-        public override Enemy CreateEnemy(IPathFinding pathFinder, EnemyType type, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture)
+        public override Enemy CreateEnemy(IPathFinding pathFinder, EnemyType type, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state)
         {
             switch (type)
             {
                 case EnemyType.Small:
-                    return new EnemyA(pathFinder, weapon, player, lifePoints, position, texture);
+                    return new EnemyA(pathFinder, weapon, player, lifePoints, position, texture, state);
                 case EnemyType.Big:
-                    return new EnemyB(pathFinder, weapon, player, lifePoints, position, texture);
+                    return new EnemyB(pathFinder, weapon, player, lifePoints, position, texture, state);
                 case EnemyType.Boss:
-                    return new Boss(pathFinder, weapon, player, lifePoints, position, texture);
+                    return new Boss(pathFinder, weapon, player, lifePoints, position, texture, state);
                 default:
                     return null;
             }
