@@ -7,7 +7,7 @@ namespace Shooter.Classes
 {
     public class EnemyA : Enemy
     {
-        public EnemyA(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state) : base(pathFinder, weapon, player, lifePoints, position, texture, state)
+        public EnemyA(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state, IMap map) : base(pathFinder, weapon, player, lifePoints, position, texture, state, map)
         {
         }
 

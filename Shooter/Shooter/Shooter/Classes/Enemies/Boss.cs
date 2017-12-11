@@ -10,7 +10,7 @@ namespace Shooter.Classes
     {
         private IList<Enemy> minions;
 
-        public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state) : base(pathFinder, weapon, player, lifePoints, position, texture, state)
+        public Boss(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state, IMap map) : base(pathFinder, weapon, player, lifePoints, position, texture, state, map)
         {
             minions = new List<Enemy>();
             BaseDamage = 20;

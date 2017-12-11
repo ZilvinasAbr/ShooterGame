@@ -36,7 +36,7 @@ namespace Shooter.Classes
 
         public void Send(string message)
         {
-            Map.BroadcastToEnemies(message, this);
+            Map?.BroadcastToEnemies(message, this);
         }
 
         // Updates Enemies ActionState, if it sees enemy, action
@@ -46,7 +46,7 @@ namespace Shooter.Classes
             CurrentState.DoAction(this);
         }
 
-        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state)
+        protected Enemy(IPathFinding pathFinder, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state, IMap map)
         {
             PathFinder = pathFinder;
             Weapon = weapon;
@@ -55,6 +55,7 @@ namespace Shooter.Classes
             Texture = texture;
             CurrentState = state;
             _player = player;
+            Map = map;
             _player.AttachObserver(this);
             Alive = true;
             Send(EnemySpawned);

@@ -8,6 +8,6 @@ namespace Shooter.PatternClasses
 {
     public abstract class EnemiesFactory
     {
-        public abstract Enemy CreateEnemy(IPathFinding pathFinder, EnemyType type, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state);
+        public abstract Enemy CreateEnemy(IPathFinding pathFinder, EnemyType type, IWeapon weapon, IPlayer player, double lifePoints, Vector2 position, Texture2D texture, IActionState state, IMap map);
     }
 }

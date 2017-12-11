@@ -30,9 +30,9 @@ namespace Shooter
 			var pistol = new Pistol();
 			var enemies = new List<IEnemyObserver>
 			{
-				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"))
+				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyA(mockPathFinder, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap)
 			};
 
 			foreach (var enemy in enemies)
@@ -60,11 +60,11 @@ namespace Shooter
 			var enemyState = new EnemyStateFactory();
 
 			var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 			Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his type is " +
 								 enemyA.GetType());
 			var enemyB =
-				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"));
+				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 			Logger.Instance.Info("Second enemy has " + enemyB.LifePoints + " life points and his type is " +
 								 enemyB.GetType());
 		}
@@ -81,7 +81,7 @@ namespace Shooter
 
 			EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
 			var enemyA = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 
 			Logger.Instance.Info("First enemy has " + enemyA.LifePoints + " life points and his hash code is " +
 								 enemyA.GetHashCode() + " and weapon's hash code is " +
@@ -116,18 +116,18 @@ namespace Shooter
 			var pistol = new Pistol();
 			var enemyState = new EnemyStateFactory();
 
-			var boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"));
-			var boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"));
+			var boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+			var boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
 			EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
 			var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 			var enemyB1 =
-				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"));
+				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 			var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 			var enemyB2 =
-				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"));
+				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
 			boss1.AddMinion(enemyA1);
 			boss1.AddMinion(boss2);
@@ -167,27 +167,27 @@ namespace Shooter
 			var pistol = new Pistol();
 			var enemyState = new EnemyStateFactory();
 
-			Boss Boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"));
-			Boss Boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"));
+			Boss boss1 = new Boss(mockPathFinder, pistol, player1, 500, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+			Boss boss2 = new Boss(mockPathFinder, pistol, player1, 200, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
 			EnemiesFactory enemiesFactory = new EnemiesConcreteFactory();
 			var enemyA1 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 50, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 			var enemyB1 =
-				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"));
+				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 75, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 			var enemyA2 = enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Small, pistol, player1, 25, mockPosition,
-				null, enemyState.GetState("Moving"));
+				null, enemyState.GetState("Moving"), mockMap);
 			var enemyB2 =
-				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"));
+				enemiesFactory.CreateEnemy(mockPathFinder, EnemyType.Big, pistol, player1, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
-			Boss1.AddMinion(enemyA1);
-			Boss1.AddMinion(Boss2);
-			Boss1.AddMinion(enemyB1);
+			boss1.AddMinion(enemyA1);
+			boss1.AddMinion(boss2);
+			boss1.AddMinion(enemyB1);
 
-			Boss2.AddMinion(enemyA2);
-			Boss2.AddMinion(enemyB2);
+			boss2.AddMinion(enemyA2);
+			boss2.AddMinion(enemyB2);
 
-			Boss1.Accept(new EnemyVisitor());
+			boss1.Accept(new EnemyVisitor());
 		}
 
 		private static void BridgeExample()
@@ -203,8 +203,8 @@ namespace Shooter
 			IWeapon bazooka = new Bazooka();
 			IWeapon pistol = new Pistol();
 
-			Enemy enemyAWithBazooka = new EnemyA(mockPathFinder, bazooka, player, 50, mockPosition, null, enemyState.GetState("Moving"));
-			Enemy enemyBWithPistol = new EnemyB(mockPathFinder, pistol, player, 50, mockPosition, null, enemyState.GetState("Moving"));
+			Enemy enemyAWithBazooka = new EnemyA(mockPathFinder, bazooka, player, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+			Enemy enemyBWithPistol = new EnemyB(mockPathFinder, pistol, player, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
 			enemyAWithBazooka.Attack();
 			enemyBWithPistol.Attack();
@@ -248,7 +248,7 @@ namespace Shooter
 			var mockPlayer = new Player1 { LifePoints = 100 };
 			var enemyState = new EnemyStateFactory();
 
-			var enemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 50, mockPosition, null, enemyState.GetState("Moving"));
+			var enemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 50, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 			enemy.DoAction();
 			enemy.CurrentState = enemyState.GetState("Shooting");
 			enemy.DoAction();
@@ -265,9 +265,9 @@ namespace Shooter
 			var mockPlayer = new Player1 { LifePoints = 100 };
 			var enemyState = new EnemyStateFactory();
 
-			var grandparentEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"));
-			var parentEnemy = new EnemyB(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"));
-			var childEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"));
+			var grandparentEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+			var parentEnemy = new EnemyB(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+			var childEnemy = new EnemyA(pathfindingAdapter, weapon, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap);
 
 			parentEnemy.SetParentEnemy(grandparentEnemy);
 			childEnemy.SetParentEnemy(parentEnemy);
@@ -287,31 +287,31 @@ namespace Shooter
 
 		private static void MediatorExample()
 		{
-			Console.WriteLine("Chain of Responsibility Example:");
+			Console.WriteLine("Mediator Example:");
 
 			var enemyState = new EnemyStateFactory();
 			var mapWidthAndHeight = 16;
 			var mockPosition = Vector2.Zero;
-			var map = new Map(mapWidthAndHeight, mapWidthAndHeight);
+            var mockMap = new Map(mapWidthAndHeight, mapWidthAndHeight);
 			var mockPlayer = new Player1 { LifePoints = 100 };
 			var mapObjects = new List<IMapObject>
 			{
-				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyB(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyB(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving")),
-				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving")),
+				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyB(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyB(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap),
+				new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap),
 				mockPlayer,
 				new Wall()
 			};
 
 			foreach (var mapObject in mapObjects)
 			{
-				map.AddMapObject(mapObject);
+				mockMap.AddMapObject(mapObject);
 			}
 
-			mapObjects[0].Send("Enemy 0 sends a message");
-			mapObjects[1].Send("Enemy 1 sends a message");
+		    var newEnemy = new EnemyA(null, null, mockPlayer, 100, mockPosition, null, enemyState.GetState("Moving"), mockMap);
+		    Logger.Instance.Info("All enemies received a message that an enemy spawned, so their base damages increase");
 		}
 
 		/// <summary>
